@@ -1,1 +1,54 @@
 @import "tailwindcss";
+
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+ body{
+       font-family: "Outfit", sans-serif;
+ }
+
+ @theme {
+
+  --color-primary-100: #2356cfff;
+  --color-primary-90: #2356cfcc;
+  --color-primary-80: #2356cf99;
+  --color-primary-60: #2356cf66;
+  --color-primary-40: #2356cf33;
+  --color-primary-10: #2356cf1a;
+
+
+  --color-success-100: #0c7e6eff;
+  --color-success-90: #0c7e6ecc;
+  --color-success-80: #0c7e6e99;
+  --color-success-60: #0c7e6e66;
+  --color-success-40: #0c7e6e33;
+  --color-success-10: #0c7e6e1a;
+
+
+  --color-danger-100: #cd1616ff;
+  --color-danger-90: #cd1616cc;
+  --color-danger-80: #cd161699;
+  --color-danger-60: #cd161666;
+  --color-danger-40: #cd161633;
+  --color-danger-10: #cd16161a;
+
+ 
+  --color-warning-100: #f2a001ff;
+  --color-warning-90: #f2a001cc;
+  --color-warning-80: #f2a00199;
+  --color-warning-60: #f2a00166;
+  --color-warning-40: #f2a00133;
+  --color-warning-10: #f2a0011a;
+
+ 
+  --color-neutral-100: #191919ff;
+  --color-neutral-90: #191919cc;
+  --color-neutral-80: #19191999;
+  --color-neutral-60: #19191966;
+  --color-neutral-40: #19191933;
+  --color-neutral-10: #1919191a;
+
+
+  --color-gradient-1: linear-gradient(to right, #9e326d, #f48e65);
+  --color-gradient-2: linear-gradient(to right, #10062b, #420129);
+  --color-gradient-3: linear-gradient(to right, #b158fe, #6483e8);
+}
