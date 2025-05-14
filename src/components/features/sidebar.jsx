@@ -1,15 +1,15 @@
 import { Link, NavLink, useLocation } from "react-router-dom";
-import { navItems } from "../../helpers/constants";
+import {navItems } from "../../helpers/constants";
+import {bottomNavItems }from "../../helpers/constants"
 import Logo from "../ui/logo";
 
 const Sidebar = () => {
   const location = useLocation();
-
-  const activeLinkClass = "bg-white bg-opacity-20 font-medium";
-  const inactiveLinkClass = "hover:bg-white hover:bg-opacity-10";
+  const activeLinkClass = "bg-[#10062b] bg-opacity-20 font-medium";
+  const inactiveLinkClass = "hover:bg-gray-400 hover:bg-opacity-10";
 
   return (
-    <div className="w-64 min-h-screen bg-gradient-to-r from-[#10062b] to-[#420129] text-white  p-4 flex flex-col fixed">
+    <div className="w-64 min-h-screen bg-gradient-to-r from-[#10062b] to-[#420129] text-white   p-4 flex flex-col fixed">
       <Link to="/sidebar">
         <Logo />
       </Link>

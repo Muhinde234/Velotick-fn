@@ -5,8 +5,9 @@ import NotFound from './pages/NotFound'
 import Home from './pages/home'
 import LoginPage from './components/forms/login'
 import RegisterPage from './components/forms/register'
-
-
+import Sidebar from './components/features/sidebar'
+import Schedule from './pages/schedule'
+import Dashboardlayout from './layouts/dashboardlayout'
 
 
 function App() {
@@ -20,7 +21,12 @@ function App() {
         {
           path:"",
           element:<Home/>
+        },
+        {
+          path:'schedule',
+          element:<Schedule/>
         }
+       
       ]
   
     },
@@ -31,7 +37,16 @@ function App() {
     {
       path:"register",
       element:<RegisterPage/>
+    },
+
+    {
+      path:"dashboard",
+      element:<Dashboardlayout/>,
+      children:[
+       
+      ]
     }
+    
     
   ])
 

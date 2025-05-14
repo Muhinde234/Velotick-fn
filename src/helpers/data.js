@@ -1,4 +1,11 @@
-import {  ShieldCheckIcon, TicketIcon } from "lucide-react";
+import {
+  
+  ShieldCheckIcon,
+  TicketIcon 
+} from "lucide-react";
+
+
+
 
 const features = [
     {
@@ -17,5 +24,8 @@ const features = [
       description: "Get instant updates on bus schedules and seat availability",
     },
   ];
+
+
+
 
   export default features
