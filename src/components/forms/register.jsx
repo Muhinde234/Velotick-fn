@@ -151,7 +151,7 @@ const RegisterPage = () => {
           <div className="text-center">
             <Button
               type="submit"
-              className="w-full bg-[#2356CF] text-white p-2 rounded-lg mt-2 hover:bg-[#1a4bb5] transition-colors"
+              className="w-full bg-[#2356CF] text-white p-2 rounded-lg mt-2 hover:bg-[#1a4bb5] transition-colors cursor-pointer"
             >
               Register
             </Button>

@@ -1,3 +1,4 @@
+import { ArrowUp } from "lucide-react";
 import error from "../assets/error.svg"
 import Button from "../components/ui/button";
 import {useNavigate} from "react-router-dom";
@@ -12,11 +13,17 @@ const NotFound = () => {
                     <div className="flex flex-col items-center">
                         <h1 className="font-bold text-dark mb-6 text-3xl">Page Not Found</h1>
                         <p className="font-medium text-muted text-center">This page is still under development by the team, come back in later time.</p>
-                        <Button
-                            className="mt-6"
+                        <div className="flex mt-6 bg-gray-200 gap-3 p-4 rounded-full cursor-pointer">
+                             <Button
+                            className="cursor-pointer"
                             onClick={() => {navigate("/", {replace: true})}}>
                             Go to Home
+
                         </Button>
+                        <ArrowUp size={20}/>
+
+                        </div>
+                       
                     </div>
                 </div>
             </div>

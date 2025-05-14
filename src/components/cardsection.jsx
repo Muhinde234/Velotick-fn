@@ -1,7 +1,7 @@
 
 import Card from "../components/ui/card"
 import Container from "./ui/container";
-import features from "../helpers/data"
+import {features}from "../helpers/data"
 
 
 
