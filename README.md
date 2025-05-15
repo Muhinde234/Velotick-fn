@@ -28,26 +28,7 @@ The platform aims to:
 
 ![image](./src/assets/image.png)
 
-## 📂 Project Structure
 
-
-velotick-frontend/
-│
-├── public/              # Static assets
-├── src/
-│   ├── assets/          # Images, icons
-│   ├── components/      # Reusable UI components (Navbar, Buttons, etc.)
-│   ├── pages/           # Page views (Home, Booking, Login, etc.)
-│   ├── routes/          # Route definitions
-│   ├── services/        # API logic (Axios configs)
-│   ├── hooks/           # Custom React hooks
-│   ├── context/         # Global state (e.g., user auth)
-│   ├── App.jsx          # Main app component
-│   └── main.jsx         # Entry point
-├── .env                 # Environment variables
-├── tailwind.config.js   # Tailwind setup
-├── postcss.config.js
-└── package.json
 
 ## 🚀 Getting Started
 

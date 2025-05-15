@@ -1,11 +1,39 @@
-import {  Pencil, Trash2 } from "lucide-react";
+import { Pencil, Trash2 } from "lucide-react";
 import { bookings } from "../../helpers/data";
 import Button from "../../components/ui/button";
 import Topsection from "../../components/ui/topsection";
+import { useState } from "react";
+import Warningmodel from "../../components/ui/warningmodel";
 
 export default function Bookings() {
+  const [showWarning, setShowWarning] = useState(false);
+  const [bookingToDelete, setBookingToDelete] = useState(null);
+
+  const handleDeleteClick = (bookingId) => {
+    setBookingToDelete(bookingId);
+    setShowWarning(true);
+  };
+
+  const handleConfirmDelete = () => {
+    //  make an API call to delete the booking
+    console.log("Deleting booking:", bookingToDelete);
+    setShowWarning(false);
+    setBookingToDelete(null);
+  };
+
+  const handleCancelDelete = () => {
+    setShowWarning(false);
+    setBookingToDelete(null);
+  };
+
   return (
     <div className="p-6 bg-white ml-0 md:ml-64 min-h-screen">
+      {showWarning && (
+        <Warningmodel 
+          onCancel={handleCancelDelete} 
+          onConfirm={handleConfirmDelete} 
+        />
+      )}
      
       <div>
         <Topsection/>
@@ -56,7 +84,10 @@ export default function Bookings() {
                     <button className="p-2 bg-emerald-100 text-emerald-700 rounded-full hover:bg-emerald-200 transition-colors">
                       <Pencil size={16} />
                     </button>
-                    <button className="p-2 bg-red-100 text-red-700 rounded-full hover:bg-red-200 transition-colors">
+                    <button 
+                      className="p-2 bg-red-100 text-red-700 rounded-full hover:bg-red-200 transition-colors"
+                      onClick={() => handleDeleteClick(idx)}
+                    >
                       <Trash2 size={16} />
                     </button>
                   </div>
