@@ -1,20 +1,26 @@
 import Button from "./button"
 
-
-const Warningmodel = () => {
+const Warningmodel = ({ onCancel, onConfirm }) => {
   return (
-    <div>
-        <h1>Warning!</h1>
-        <p>Are you sure? This action can not be undone!</p>
+    <div className="fixed inset-0  bg-opacity-40 flex items-center justify-center p-4 z-50">
+      <div className="bg-white rounded-lg p-6 w-full max-w-md">
+        <h1 className="text-xl font-bold text-red-600 mb-2">Warning!</h1>
+        <p className="text-gray-700 mb-6">Are you sure? This action cannot be undone!</p>
         <div className="flex justify-end gap-3">
-            <Button
-            className="border border-primary-100 text-primary-90  p-3"
-            >cancel</Button>
-            <Button
-            className="bg-red-700 text-white p-3"
-            >confirm</Button>
-
+          <Button
+            onClick={onCancel}
+            className="border border-primary-100 text-primary-90 px-4 py-2 rounded-md hover:bg-gray-50"
+          >
+            Cancel
+          </Button>
+          <Button
+            onClick={onConfirm}
+            className="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-md"
+          >
+            Confirm
+          </Button>
         </div>
+      </div>
     </div>
   )
 }
