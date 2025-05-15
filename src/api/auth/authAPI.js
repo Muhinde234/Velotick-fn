@@ -10,5 +10,5 @@ export const login = async (userData) => {
 
 export const logout = async () => {
     const {data} = await API.post("/auth/logout");
-    return data;
+    return data; // No response body.
 }
