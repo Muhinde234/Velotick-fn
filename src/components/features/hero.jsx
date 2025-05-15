@@ -1,6 +1,7 @@
 import home from "../../assets/home.jpg";
 import CardSection from "../cardsection";
 import RecentSchedules from "../recentschedules";
+import Button from "../ui/button";
 
 const Hero = () => {
   return (
@@ -24,9 +25,9 @@ const Hero = () => {
               few clicks.
             </p>
 
-            <button className="bg-primary-100 hover:bg-blue-700 text-white rounded-lg font-semibold transition w-full sm:w-[190px] h-[45px] p-2">
+            <Button className="bg-primary-100 hover:bg-blue-700 text-white rounded-lg font-semibold transition w-full sm:w-[190px] h-[45px] p-2">
               View Schedules Now
-            </button>
+            </Button>
           </div>
           
       
@@ -48,9 +49,9 @@ const Hero = () => {
               defaultValue="2025-05-25"
             />
             <div className="w-full sm:w-[48%] md:w-auto">
-              <button className="w-full md:w-[150px] h-[45px] bg-primary-100 text-white font-semibold rounded-lg hover:bg-blue-700 transition">
+              <Button className="w-full md:w-[150px] h-[45px] bg-primary-100 text-white font-semibold rounded-lg hover:bg-blue-700 transition">
                 Find schedules
-              </button>
+              </Button>
             </div>
           </div>
         </section>
