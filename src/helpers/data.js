@@ -1,4 +1,11 @@
-import {  ShieldCheckIcon, TicketIcon } from "lucide-react";
+import {
+  
+  ShieldCheckIcon,
+  TicketIcon 
+} from "lucide-react";
+
+
+
 
 const features = [
     {
@@ -18,4 +25,35 @@ const features = [
     },
   ];
 
-  export default features
+  const bookings = [
+  {
+    passenger: "Muhinde Dosta",
+    phone: "+250791154300",
+    route: "Kigali to Kampala",
+    date: "05 March 2025",
+    time: "14:30",
+    seats: "A1, B1",
+  },
+  {
+    passenger: "Murenzi Frank",
+    phone: "+250791154300",
+    route: "Kigali to Nairobi",
+    date: "18 June 2025",
+    time: "09:15",
+    seats: "B10",
+  },
+  {
+    passenger: "Kayitsinga Hertillan",
+    phone: "+250791154300",
+    route: "Kigali to Bujumbura",
+    date: "27 August 2025",
+    time: "16:45",
+    seats: "C1",
+  },
+
+];
+
+
+
+
+  export {features,bookings}

@@ -1,12 +1,15 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import './App.css'
+import './index.css'
 import Guestlayout from './layouts/Guestlayout'
 import NotFound from './pages/NotFound'
 import Home from './pages/home'
 import LoginPage from './components/forms/login'
 import RegisterPage from './components/forms/register'
-
-
+import Schedule from './pages/schedules'
+import Dashboardlayout from './layouts/dashboardlayout'
+import Bookings from './pages/dashboard/booking'
+import Scheduledashboard from './pages/dashboard/schedule'
+import Routes from './pages/dashboard/routes'
 
 
 function App() {
@@ -20,7 +23,12 @@ function App() {
         {
           path:"",
           element:<Home/>
-        }
+        },
+        {
+          path:'schedule',
+          element:<Schedule/>
+        },
+       
       ]
   
     },
@@ -31,7 +39,29 @@ function App() {
     {
       path:"register",
       element:<RegisterPage/>
+    },
+
+    {
+      path:"dashboard",
+      element:<Dashboardlayout/>,
+      children:[
+        {
+          path:"booking",
+          element:<Bookings/>
+        },
+         {
+          path:'schedules',
+          element:<Scheduledashboard/>
+        },
+        {
+          path:"routes",
+          element:<Routes/>
+        }
+       
+       
+      ]
     }
+    
     
   ])
 

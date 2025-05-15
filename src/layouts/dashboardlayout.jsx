@@ -1,9 +1,16 @@
+import { Outlet } from "react-router-dom"
+import Sidebar from "../components/features/sidebar"
 
 
-const dashboardlayout = () => {
+const Dashboardlayout = () => {
   return (
-    <div>dashboardlayout</div>
+    <div>
+        <Sidebar/>
+        <main>
+            <Outlet/>
+        </main>
+    </div>
   )
 }
 
-export default dashboardlayout
+export default Dashboardlayout
