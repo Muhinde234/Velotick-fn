@@ -24,6 +24,9 @@ The platform aims to:
 - **React Router** – For routing between pages.
 - **Axios** – For API calls to the backend.
 - **QR Code Generator/Scanner Libraries** – For ticket verification.
+### 🏠 Homepage View
+
+![image](./public/assets/image.png)
 
 
 
