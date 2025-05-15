@@ -80,7 +80,7 @@ const Aside = () => {
         <p className="font-medium">Selected seats: 4</p>
         <p className=" text-lg">Total price: 8,000 Frw</p>
         <Button
-        className="text-primary-90 border border-primary-80 p-2 rounded-sm">
+        className="text-primary-90 border border-primary-80 p-2 rounded-sm cursor-pointer">
             continue to booking
 
         </Button>

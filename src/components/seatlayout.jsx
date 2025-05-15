@@ -36,6 +36,19 @@ const SeatLayout = () => {
     setSeats(newSeats);
   };
 
+  
+  const getSeatLabel = (rowIdx, colIdx) => {
+    const rowNumber = rowIdx + 1;
+    const seatLetters = ['A', 'B', 'D'];  
+    
+    
+    if (colIdx === 0) return `A${rowNumber}`;
+    if (colIdx === 1) return `B${rowNumber}`;
+    if (colIdx === 4) return `D${rowNumber}`;
+    
+    return ''; 
+  };
+
   const selectedSeatsCount = seats.flat().filter(seat => seat === 'selected').length;
   const availableSeatsCount = seats.flat().filter(seat => seat === 'available').length;
   const totalSeatsCount = seats.flat().filter(seat => seat !== null).length;
@@ -65,7 +78,7 @@ const SeatLayout = () => {
               </div>
             </div>
 
-            <div className=" lg:ml-38 border border-gray-300 rounded-xl p-6 bg-white shadow-sm">
+            <div className="lg:ml-38 border border-gray-300 rounded-xl p-6 bg-white shadow-sm">
               {seats.map((row, rowIdx) => (
                 <div key={rowIdx} className="flex justify-center gap-10 mb-3">
                   {row.map((status, colIdx) => (
@@ -73,8 +86,9 @@ const SeatLayout = () => {
                       <div key={colIdx} className="w-12 h-12"></div>
                     ) : (
                       <Seat
-                        key={colIdx}
+                        key={`${rowIdx}-${colIdx}`}
                         status={status}
+                        label={getSeatLabel(rowIdx, colIdx)}
                         onClick={() => handleSeatClick(rowIdx, colIdx)}
                       />
                     )
@@ -84,8 +98,7 @@ const SeatLayout = () => {
             </div>
           </div>
         </div>
-          <Aside/>
-      
+        <Aside />
       </main>
     </div>
   );

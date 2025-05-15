@@ -1,79 +1,62 @@
-import { Bell, Pencil, Trash2 } from "lucide-react";
+import {  Pencil, Trash2 } from "lucide-react";
 import { bookings } from "../../helpers/data";
-import SearchBar from "../../components/ui/searchbar";
-import avatar from "../../assets/avatar.png";
+import Button from "../../components/ui/button";
+import Topsection from "../../components/ui/topsection";
 
 export default function Bookings() {
   return (
-    <div className="p-6 bg-white ">
-      <div className="flex justify-center items-center mb-4">
-        <h1>Good Morning !</h1>
-        <SearchBar />
-        <div className="bg-gray-300 rounded-full p-2">
-          <Bell />
-        </div>
-        <div className="flex items-center w-full max-w-md bg-gray-200 rounded-full ">
-          <div className="  rounded-full p-2 flex items-center justify-center">
-            <img src={avatar}  className="w-10 h-10"/>
-          </div>
-
-          <input
-            type="text"
-            placeholder=" name"
-            className="ml-3 py-2 px-2 text-sm w-full focus:outline-none
-      placeholder:text-gray-500"
-          />
-        </div>
-        
+    <div className="p-6 bg-white ml-0 md:ml-64 min-h-screen">
+     
+      <div>
+        <Topsection/>
       </div>
-
-      <div className="flex justify-between items-center mb-4">
+ 
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
         <div>
-          <h1 className="text-xl font-bold">All Bookings list</h1>
+          <h1 className="text-2xl font-bold">All Bookings list</h1>
           <p className="text-sm text-gray-500">Showing 10 of 50 bookings</p>
         </div>
 
-        <div className="flex items-center space-x-3">
-          <button className="flex items-center px-4 py-1.5 text-white bg-blue-600 hover:bg-blue-700 rounded-full text-sm font-medium">
+        <div className="flex items-center gap-3">
+          <Button className="flex items-center px-4 py-2 text-white bg-blue-600 hover:bg-blue-700 rounded-full text-sm font-medium transition-colors whitespace-nowrap">
             Add <span className="ml-1 text-xl leading-none">＋</span>
-          </button>
-          <button className="border px-3 py-1.5 rounded-full text-sm font-medium border-gray-300 text-gray-700">
+          </Button>
+          <button className="border px-4 py-2 rounded-full text-sm font-medium border-gray-300 text-gray-700 hover:bg-gray-50 transition-colors whitespace-nowrap">
             Monthly
           </button>
         </div>
       </div>
 
-      <div className="overflow-x-auto">
-        <table className="min-w-full text-sm text-left border border-gray-200 rounded-lg">
+      {/* Table */}
+      <div className="overflow-x-auto rounded-lg border border-gray-200">
+        <table className="min-w-full divide-y divide-gray-200">
           <thead className="bg-gray-100">
             <tr>
-              <th className="px-4 py-2 font-semibold text-gray-700">
-                Passenger
-              </th>
-              <th className="px-4 py-2 font-semibold text-gray-700">Route</th>
-              <th className="px-4 py-2 font-semibold text-gray-700">Date</th>
-              <th className="px-4 py-2 font-semibold text-gray-700">Time</th>
-              <th className="px-4 py-2 font-semibold text-gray-700">Seats</th>
-              <th className="px-4 py-2 font-semibold text-gray-700">Action</th>
+              <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider sm:px-6">Passenger</th>
+              <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider sm:px-6">Route</th>
+              <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider sm:px-6">Date</th>
+              <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider sm:px-6">Time</th>
+              <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider sm:px-6">Seats</th>
+              <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider sm:px-6">Action</th>
             </tr>
           </thead>
-          <tbody className="divide-y">
+          <tbody className="bg-white divide-y divide-gray-200">
             {bookings.map((b, idx) => (
               <tr key={idx} className="hover:bg-gray-50">
-                <td className="px-4 py-3">
+                <td className="px-4 py-4 whitespace-nowrap sm:px-6">
                   <div className="font-medium text-gray-900">{b.passenger}</div>
                   <div className="text-gray-500 text-xs">{b.phone}</div>
                 </td>
-                <td className="px-4 py-3">{b.route}</td>
-                <td className="px-4 py-3">{b.date}</td>
-                <td className="px-4 py-3">{b.time}</td>
-                <td className="px-4 py-3">{b.seats}</td>
-                <td className="px-4 py-3">
-                  <div className="flex space-x-2">
-                    <button className="p-2 bg-emerald-100 text-emerald-700 rounded-full hover:bg-emerald-200">
+                <td className="px-4 py-4 whitespace-nowrap sm:px-6">{b.route}</td>
+                <td className="px-4 py-4 whitespace-nowrap sm:px-6">{b.date}</td>
+                <td className="px-4 py-4 whitespace-nowrap sm:px-6">{b.time}</td>
+                <td className="px-4 py-4 whitespace-nowrap sm:px-6">{b.seats}</td>
+                <td className="px-4 py-4 whitespace-nowrap sm:px-6">
+                  <div className="flex gap-2">
+                    <button className="p-2 bg-emerald-100 text-emerald-700 rounded-full hover:bg-emerald-200 transition-colors">
                       <Pencil size={16} />
                     </button>
-                    <button className="p-2 bg-red-100 text-red-700 rounded-full hover:bg-red-200">
+                    <button className="p-2 bg-red-100 text-red-700 rounded-full hover:bg-red-200 transition-colors">
                       <Trash2 size={16} />
                     </button>
                   </div>
