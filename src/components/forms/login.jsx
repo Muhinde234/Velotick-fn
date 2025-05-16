@@ -6,39 +6,55 @@ import Button from "../ui/button";
 import { Link } from "react-router-dom";
 import { loginSchema } from "./validation/loginvalidation";
 
-
 const LoginPage = () => {
   const [form, setForm] = useState({
     email: "",
     password: "",
   });
   const [errors, setErrors] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e) => {
     const { id, value } = e.target;
     setForm({ ...form, [id]: value });
-   
+    
     if (errors[id]) {
       setErrors({ ...errors, [id]: "" });
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const result = loginSchema.safeParse(form);
+    setIsSubmitting(true);
     
-    if (!result.success) {
-      const formattedErrors = result.error.flatten().fieldErrors;
+    const validation = loginSchema.safeParse(form);
+    
+    if (!validation.success) {
+      const formattedErrors = validation.error.flatten().fieldErrors;
       setErrors({
         email: formattedErrors.email?.[0] || "",
         password: formattedErrors.password?.[0] || ""
       });
+      setIsSubmitting(false);
       return;
     }
 
-    setErrors({});
-    console.log("Login data is valid:", result.data);
-    // Proceed with login API call
+    try {
+      // Here you would typically make your API call
+      console.log("Login data is valid:", validation.data);
+      
+      
+      
+      setForm({ email: "", password: "" });
+      setErrors({});
+    } catch (error) {
+      console.error("Login failed:", error);
+      setErrors({
+        server: error.message || "Login failed. Please try again."
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -56,6 +72,12 @@ const LoginPage = () => {
         </div>
         <div className="border-t border-gray-200 my-4"></div>
 
+        {errors.server && (
+          <div className="mb-4 p-3 bg-red-100 text-red-700 rounded-md text-sm">
+            {errors.server}
+          </div>
+        )}
+
         <form onSubmit={handleSubmit} className="space-y-4">
           <Input
             label="Email"
@@ -65,6 +87,8 @@ const LoginPage = () => {
             value={form.email}
             onChange={handleChange}
             error={errors.email}
+            required
+        
           />
           <Input
             label="Password"
@@ -74,9 +98,13 @@ const LoginPage = () => {
             value={form.password}
             onChange={handleChange}
             error={errors.password}
+            required
           />
           <div className="flex flex-col sm:flex-row justify-between items-center gap-2 text-sm">
-            <Link to="/" className="hover:underline text-blue-600">
+            <Link 
+              to="/forgot-password" 
+              className="hover:underline text-blue-600"
+            >
               Forgot password?
             </Link>
             <span>
@@ -91,8 +119,9 @@ const LoginPage = () => {
             <Button
               type="submit"
               className="w-full bg-[#2356CF] text-white p-2 rounded-lg mt-2 hover:bg-[#1a4bb5] transition-colors cursor-pointer"
+              disabled={isSubmitting}
             >
-              Login
+              {isSubmitting ? "Logging in..." : "Login"}
             </Button>
           </div>
         </form>

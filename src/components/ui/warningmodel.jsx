@@ -1,6 +1,18 @@
+import { useEffect } from "react"
 import Button from "./button"
 
-const Warningmodel = ({ onCancel, onConfirm }) => {
+const Warningmodel = ({ onCancel, onConfirm,onClose }) => {
+  
+    useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        onClose();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [onClose]);
   return (
     <div className="fixed inset-0  bg-black/50 backdrop-opacity-sm flex items-center justify-center p-4 z-50">
       <div className="bg-white rounded-lg p-6 w-full max-w-md">
