@@ -10,6 +10,8 @@ import Dashboardlayout from './layouts/dashboardlayout'
 import Bookings from './pages/dashboard/booking'
 import Scheduledashboard from './pages/dashboard/schedule'
 import Routes from './pages/dashboard/routes'
+import Dashboard from './pages/dashboard/dashboard'
+import ChangePassword from './components/forms/changepassword'
 
 
 function App() {
@@ -40,6 +42,11 @@ function App() {
       path:"register",
       element:<RegisterPage/>
     },
+    {
+      path:"changepassword",
+      element:<ChangePassword/>
+    },
+ 
 
     {
       path:"dashboard",
@@ -56,6 +63,10 @@ function App() {
         {
           path:"routes",
           element:<Routes/>
+        },
+        {
+          path:"dashboards",
+          element:<Dashboard/>
         }
        
        

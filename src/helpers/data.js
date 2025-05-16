@@ -52,8 +52,24 @@ const features = [
   },
 
 ];
+const dashboardStats = [
+  {
+    title: "Total Earnings",
+    value: "120,000 Rwf",
+    change: null
+  },
+  {
+    title: "Today's Bookings",
+    value: "3,653",
+    change: "5%"
+  },
+  {
+    title: "Successful Departures",
+    value: "140/220",
+    change: "5%"
+  }
+];
 
 
 
-
-  export {features,bookings}
+  export {features,bookings,dashboardStats }

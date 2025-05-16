@@ -77,6 +77,7 @@ const RegisterPage = () => {
                 value={form.firstname}
                 onChange={handleChange}
                 error={errors.firstname}
+                required
               />
             </div>
             <div className="flex-1">
@@ -87,6 +88,7 @@ const RegisterPage = () => {
                 value={form.lastname}
                 onChange={handleChange}
                 error={errors.lastname}
+                required
               />
             </div>
           </div>
@@ -99,6 +101,7 @@ const RegisterPage = () => {
             value={form.email}
             onChange={handleChange}
             error={errors.email}
+            required
           />
 
           <Input
@@ -108,6 +111,7 @@ const RegisterPage = () => {
             value={form.phone}
             onChange={handleChange}
             error={errors.phone}
+            required
           />
 
           <Select
@@ -117,6 +121,7 @@ const RegisterPage = () => {
             value={form.country}
             onChange={handleChange}
             error={errors.country}
+            required
           />
 
           <Input
@@ -127,6 +132,7 @@ const RegisterPage = () => {
             value={form.password}
             onChange={handleChange}
             error={errors.password}
+            required
           />
 
           <Input
@@ -137,6 +143,7 @@ const RegisterPage = () => {
             value={form.confirmPassword}
             onChange={handleChange}
             error={errors.confirmPassword}
+            required
           />
 
           <div className="text-sm text-center text-gray-600">
