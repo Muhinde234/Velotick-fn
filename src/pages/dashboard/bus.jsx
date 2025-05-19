@@ -9,7 +9,7 @@ import Warningmodel from "../../components/ui/warningmodel";
 
 const Bus = () => {
   const [showWarning, setShowWarning] = useState(false);
-  const [bookingToDelete, setBookingToDelete] = useState(null);
+  const [busToDelete, setBusToDelete] = useState(null);
   const stats = [
     {
       title: "Total Buses",
@@ -47,8 +47,8 @@ const Bus = () => {
     },
   });
 
-  const handleDeleteClick = (bookingId) => {
-    setBookingToDelete(bookingId);
+  const handleDeleteClick = (busId) => {
+    setBusToDelete(busId);
     setShowWarning(true);
   };
 
@@ -56,12 +56,12 @@ const Bus = () => {
     //  make an API call to delete the buses
     console.log("Deleting booking:", bookingToDelete);
     setShowWarning(false);
-    setBookingToDelete(null);
+    setBusToDelete(null);
   };
 
   const handleCancelDelete = () => {
     setShowWarning(false);
-    setBookingToDelete(null);
+    setBusToDelete(null);
   };
   return (
     <div className="p-6 bg-white ml-0 md:ml-64 max-h-screen ">
