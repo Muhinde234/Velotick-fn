@@ -1,19 +1,16 @@
-import { dashboardStats} from "../../helpers/data"
+import Topsection from "../../components/ui/topsection";
+
 
 
 const Dashboard = () => {
   return (
-    <div>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        { dashboardStats.map((stat, index) => (
-          <StatCard
-            key={index}
-            title={stat.title}
-            value={stat.value}
-            change={stat.change}
-          />
-        ))}
+    <div className="p-6 bg-white ml-0 md:ml-64 max-h-screen ">
+      <div>
+     <Topsection/>
+     <h1>dashboard</h1>
       </div>
+   
+     
     </div>
   );
 };

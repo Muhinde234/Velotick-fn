@@ -13,6 +13,8 @@ import Routes from './pages/dashboard/routes'
 import Dashboard from './pages/dashboard/dashboard'
 import ChangePassword from './components/forms/changepassword'
 import { UserProvider } from './context/userContext'
+import Bus from './pages/dashboard/bus'
+import Users from './pages/dashboard/users'
 
 
 function App() {
@@ -66,8 +68,16 @@ function App() {
           element:<Routes/>
         },
         {
-          path:"dashboards",
+          path:"home",
           element:<Dashboard/>
+        },
+        {
+          path:"buses",
+          element:<Bus/>
+        },
+        {
+          path:"users",
+          element:<Users/>
         }
        
        
