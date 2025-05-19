@@ -1,10 +1,11 @@
 import { useState } from "react";
 import Topsection from "../../components/ui/topsection";
 import StatCard from "../../components/startcard";
+import Button from "../../components/ui/button";
 
 const Users = () => {
-     const [showWarning, setShowWarning] = useState(false);
-      const [userToDelete, setUserToDelete] = useState(null);
+  const [showWarning, setShowWarning] = useState(false);
+  const [userToDelete, setUserToDelete] = useState(null);
   const stats = [
     {
       title: "admins",
@@ -56,10 +57,12 @@ const Users = () => {
           onConfirm={handleConfirmDelete}
         />
       )}
-     
-      <div> <Topsection /></div>
-    
-      
+
+      <div>
+        {" "}
+        <Topsection />
+      </div>
+
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
         {stats.map((stat, index) => (
           <StatCard
@@ -71,7 +74,22 @@ const Users = () => {
           />
         ))}
       </div>
-      
+      <div className="bg-gray-200 rounded-lg p-4">
+        <div className="flex justify-between items-center mb-4 ">
+          <div>
+            <h1>Users List</h1>
+          </div>
+         
+        <div className="flex items-center gap-3">
+          <Button className="flex items-center px-4 py-2 text-white bg-blue-600 hover:bg-blue-700 rounded-full text-sm font-medium transition-colors whitespace-nowrap">
+            Add <span className="ml-1 text-xl leading-none">＋</span>
+          </Button>
+          <Button className="border px-4 py-2 rounded-full text-sm font-medium border-gray-300 text-gray-700 hover:bg-gray-50 transition-colors whitespace-nowrap">
+            All
+          </Button>
+        </div>
+        </div>
+      </div>
     </div>
   );
 };

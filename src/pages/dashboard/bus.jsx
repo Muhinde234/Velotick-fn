@@ -87,7 +87,7 @@ const Bus = () => {
         ))}
       </div>
 
-      <div className="flex flex-col lg:flex-row gap-6 p-3 bg-gray-200">
+      <div className="flex flex-col lg:flex-row gap-6 p-3  rounded-sm bg-gray-200">
         <div className="flex-1 bg-white rounded-2xl p-6 shadow-md">
           <div className="flex justify-between items-center mb-6">
             <div>
