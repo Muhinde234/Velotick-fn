@@ -69,7 +69,11 @@ const dashboardStats = [
     change: "5%"
   }
 ];
+  const status = [
+    { title: "Total Earnings", value: "120,000 Rwf", percentage: "7%", trend: "up" },
+    { title: "Today's Bookings", value: "3,653", percentage: "5%", trend: "up" },
+    { title: "Successful Departures", value: "140/220", percentage: "5%", trend: "up" }
+  ];
 
 
-
-  export {features,bookings,dashboardStats }
+  export {features,bookings,dashboardStats,status }

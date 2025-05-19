@@ -53,7 +53,7 @@ const Bus = () => {
   };
 
   const handleConfirmDelete = () => {
-    //  make an API call to delete the booking
+    //  make an API call to delete the buses
     console.log("Deleting booking:", bookingToDelete);
     setShowWarning(false);
     setBookingToDelete(null);
