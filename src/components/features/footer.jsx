@@ -1,4 +1,4 @@
-import Container from "../ui/Container";
+import Container from "../ui/container";
 import { Link, NavLink } from "react-router-dom";
 import Logo from "../ui/logo";
 import { links } from "../../helpers/constants";

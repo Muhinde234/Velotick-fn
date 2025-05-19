@@ -1,5 +1,14 @@
+import { useEffect } from "react";
 import Button from "../../components/ui/button";
 import Topsection from "../../components/ui/topsection";
+import { useSchedules } from "../../hooks/api_hooks/useSchedules";
+
+// useEffect(() => {
+  
+//   const {data} = useSchedules();
+//   console.log(data);
+
+// }, [])
 
 const Scheduledashboard = () => {
   return (

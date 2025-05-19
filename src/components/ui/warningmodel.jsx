@@ -13,6 +13,7 @@ const Warningmodel = ({ onCancel, onConfirm,onClose }) => {
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, [onClose]);
+  
   return (
     <div className="fixed inset-0  bg-black/50 backdrop-opacity-sm flex items-center justify-center p-4 z-50">
       <div className="bg-white rounded-lg p-6 w-full max-w-md">

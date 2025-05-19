@@ -1,8 +1,10 @@
-
-
 import SearchBar from "../ui/searchbar";
 import avatar from "../../assets/avatar.png";
 import { Bell } from "lucide-react";
+
+
+
+
 const Topsection = () => {
   return (
    <>

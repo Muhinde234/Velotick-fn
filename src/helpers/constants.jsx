@@ -21,12 +21,12 @@ export const links = [
 
 export const navItems = [
   { path: "/dashboard", icon: House, label: "Dashboard" },
-  { path: "/booking", icon: Ticket, label: "Booking" },
-  { path: "/schedule", icon: Clock, label: "Schedule" },
-  { path: "/bus-management", icon: BusFront, label: "Bus Management" },
-  { path: "/route-management", icon: BusFront, label: "Route Management" },
-  { path: "/user-management", icon: Users, label: "User Management" },
-  { path: "/report", icon: ChartLine, label: "Report" }
+  { path: "/dashboard/booking", icon: Ticket, label: "Booking" },
+  { path: "/dashboard/schedules", icon: Clock, label: "Schedule" },
+  { path: "/dashboard/buses", icon: BusFront, label: "Bus Management" },
+  { path: "/dashboard/routes", icon: BusFront, label: "Route Management" },
+  { path: "/dashboard/users", icon: Users, label: "User Management" },
+  { path: "/dashboard/report", icon: ChartLine, label: "Report" }
 ];
 
 export const bottomNavItems = [
