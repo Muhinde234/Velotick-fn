@@ -26,7 +26,7 @@ The platform aims to:
 - **QR Code Generator/Scanner Libraries** – For ticket verification.
 ### 🏠 Homepage View
 
-![image](./src/assets/image.png)
+![image](./src/assets/use.png)
 
 
 

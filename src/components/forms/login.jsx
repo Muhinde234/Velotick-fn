@@ -2,7 +2,7 @@ import car from "../../assets/car.png";
 import Input from "../ui/input";
 import Container from "../ui/container";
 import Button from "../ui/button";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { useLogin } from "../../hooks/api_hooks/useAuth";
 import { useForm } from "react-hook-form";
 
@@ -29,6 +29,8 @@ const LoginPage = () => {
         console.log(error);
       }
     });
+    login();
+    Navigate("/dashboard")
   };
 
   return (
