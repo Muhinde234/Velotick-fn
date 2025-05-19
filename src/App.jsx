@@ -12,6 +12,7 @@ import Scheduledashboard from './pages/dashboard/schedule'
 import Routes from './pages/dashboard/routes'
 import Dashboard from './pages/dashboard/dashboard'
 import ChangePassword from './components/forms/changepassword'
+import { UserProvider } from './context/userContext'
 
 
 function App() {
@@ -79,7 +80,9 @@ function App() {
 
   return (
     <>
-   <RouterProvider router={router}/>
+    <UserProvider>
+      <RouterProvider router={router}/>
+    </UserProvider>
     </>
   )
 }
