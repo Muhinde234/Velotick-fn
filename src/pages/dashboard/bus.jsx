@@ -9,7 +9,7 @@ import Warningmodel from "../../components/ui/warningmodel";
 
 const Bus = () => {
   const [showWarning, setShowWarning] = useState(false);
-  const [bookingToDelete, setBookingToDelete] = useState(null);
+  const [busToDelete, setBusToDelete] = useState(null);
   const stats = [
     {
       title: "Total Buses",
@@ -47,21 +47,21 @@ const Bus = () => {
     },
   });
 
-  const handleDeleteClick = (bookingId) => {
-    setBookingToDelete(bookingId);
+  const handleDeleteClick = (busId) => {
+    setBusToDelete(busId);
     setShowWarning(true);
   };
 
   const handleConfirmDelete = () => {
-    //  make an API call to delete the booking
+    //  make an API call to delete the buses
     console.log("Deleting booking:", bookingToDelete);
     setShowWarning(false);
-    setBookingToDelete(null);
+    setBusToDelete(null);
   };
 
   const handleCancelDelete = () => {
     setShowWarning(false);
-    setBookingToDelete(null);
+    setBusToDelete(null);
   };
   return (
     <div className="p-6 bg-white ml-0 md:ml-64 max-h-screen ">
@@ -87,7 +87,7 @@ const Bus = () => {
         ))}
       </div>
 
-      <div className="flex flex-col lg:flex-row gap-6 p-3 bg-gray-200">
+      <div className="flex flex-col lg:flex-row gap-6 p-3  rounded-sm bg-gray-200">
         <div className="flex-1 bg-white rounded-2xl p-6 shadow-md">
           <div className="flex justify-between items-center mb-6">
             <div>

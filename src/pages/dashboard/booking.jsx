@@ -49,9 +49,9 @@ export default function Bookings() {
           <Button className="flex items-center px-4 py-2 text-white bg-blue-600 hover:bg-blue-700 rounded-full text-sm font-medium transition-colors whitespace-nowrap">
             Add <span className="ml-1 text-xl leading-none">＋</span>
           </Button>
-          <button className="border px-4 py-2 rounded-full text-sm font-medium border-gray-300 text-gray-700 hover:bg-gray-50 transition-colors whitespace-nowrap">
+          <Button className="border px-4 py-2 rounded-full text-sm font-medium border-gray-300 text-gray-700 hover:bg-gray-50 transition-colors whitespace-nowrap">
             Monthly
-          </button>
+          </Button>
         </div>
       </div>
 

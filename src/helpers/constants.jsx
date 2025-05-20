@@ -20,7 +20,7 @@ export const links = [
 ];
 
 export const navItems = [
-  { path: "/home", icon: House, label: "Dashboard" },
+  { path: "/dashboard/home", icon: House, label: "Dashboard" },
   { path: "/dashboard/booking", icon: Ticket, label: "Booking" },
   { path: "/dashboard/schedules", icon: Clock, label: "Schedule" },
   { path: "/dashboard/buses", icon: BusFront, label: "Bus Management" },
