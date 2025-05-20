@@ -15,6 +15,7 @@ import ChangePassword from './components/forms/changepassword'
 import { UserProvider } from './context/userContext'
 import Bus from './pages/dashboard/bus'
 import Users from './pages/dashboard/users'
+import Report from './pages/dashboard/report'
 
 
 function App() {
@@ -78,6 +79,10 @@ function App() {
         {
           path:"users",
           element:<Users/>
+        },
+        {
+          path:"report",
+          element:<Report/>
         }
        
        

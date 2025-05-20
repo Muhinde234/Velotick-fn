@@ -77,7 +77,7 @@ const Users = () => {
       <div className="bg-gray-200 rounded-lg p-4">
         <div className="flex justify-between items-center mb-4 ">
           <div>
-            <h1>Users List</h1>
+            <h2  className="text-2xl font-bold">Users List</h2>
           </div>
          
         <div className="flex items-center gap-3">
