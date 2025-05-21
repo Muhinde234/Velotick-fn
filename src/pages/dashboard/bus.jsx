@@ -98,7 +98,7 @@ const Bus = () => {
               <Button className="flex items-center px-4 py-2 text-white bg-primary-100 hover:bg-primary-80 rounded-full text-sm font-medium transition-colors whitespace-nowrap">
                 Add <span className="ml-1 text-xl leading-none">＋</span>
               </Button>
-              <select className="rounded-full border px-4  py-2 text-sm">
+              <select className="rounded-full text-xl border px-4  py-2 text-sm">
                 <option>Active</option>
               </select>
             </div>

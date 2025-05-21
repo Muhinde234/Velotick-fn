@@ -61,7 +61,7 @@ const DashboardCard = ({ title, value, description, color,icon,image }) => {
        <p className={`mt-1 text-sm ${variant.text}`}>{description}</p>
        
        <p>{icon}</p>
-       <div className="absolute bottom-0 right-0">
+       <div className="absolute bottom-0 right-2  ">
         {image}
        </div>
 
