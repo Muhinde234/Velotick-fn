@@ -6,6 +6,7 @@ import Topsection from "../../components/ui/topsection";
 import avatar from "../../assets/avatar.png";
 import { useState } from "react";
 import Warningmodel from "../../components/ui/warningmodel";
+import SEO from "../../components/ui/seo";
 
 const Bus = () => {
   const [showWarning, setShowWarning] = useState(false);
@@ -65,6 +66,7 @@ const Bus = () => {
   };
   return (
     <div className="p-6 bg-white ml-0 md:ml-64 max-h-screen ">
+       <SEO title="Bus Management dashboard" description="Bus Management dashboard" content="Bus Management dashboard" />
       {showWarning && (
         <Warningmodel
           onCancel={handleCancelDelete}

@@ -2,6 +2,7 @@ import { useState } from "react";
 import Topsection from "../../components/ui/topsection";
 import StatCard from "../../components/startcard";
 import Button from "../../components/ui/button";
+import SEO from "../../components/ui/seo";
 
 const Users = () => {
   const [showWarning, setShowWarning] = useState(false);
@@ -51,6 +52,7 @@ const Users = () => {
   };
   return (
     <div className="p-6 bg-white ml-0 md:ml-64 max-h-screen ">
+       <SEO title="User Management dashboard" description="User Management dashboard" content="User Management dashboard" />
       {showWarning && (
         <Warningmodel
           onCancel={handleCancelDelete}

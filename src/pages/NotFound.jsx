@@ -2,11 +2,14 @@ import { ArrowUp } from "lucide-react";
 import error from "../assets/error.svg"
 import Button from "../components/ui/button";
 import {useNavigate} from "react-router-dom";
+import SEO from "../components/ui/seo";
 
 const NotFound = () => {
     const navigate = useNavigate();
     return (
+
         <div className="container mx-auto px-4 md:px-8">
+             <SEO title="Not Found" description="Not Found" content="Not Found" />
             <div className="flex items-center h-screen justify-center">
                 <div className="flex flex-col max-w-screen-2xl justify-center items-center">
                     <img src={`${error}`} alt="" className="w-full"/>

@@ -7,6 +7,7 @@ import ticket from "../../assets/ticket.png";
 import person from "../../assets/person.png";
 import Button from "../../components/ui/button";
 import avatar from "../../assets/avatar.png";
+import SEO from "../../components/ui/seo";
 
 
 
@@ -48,6 +49,7 @@ const Dashboard = () => {
 
   return (
     <div className="p-6 bg-white ml-0 md:ml-64 max-h-screen ">
+       <SEO title="Admin dashboard" description="Admin dashboard" content=" Admin dashboard" />
       <div>
         <Topsection />
       </div>

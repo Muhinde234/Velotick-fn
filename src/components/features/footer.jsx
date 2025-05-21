@@ -5,59 +5,14 @@ import { links } from "../../helpers/constants";
 import { useState } from "react";
 
 const Footer = () => {
-  const [email, setEmail] = useState("");
-  const [isSubscribed, setIsSubscribed] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  
-   const handleSubmit = (e) => {
-    e.preventDefault();
-    setIsLoading(true);
-  };
+
 
   return (
-    <footer className="bg-[#2356CF] text-white py-8 mt-20 p-4 ">
+    <footer className="bg-[#2356CF] text-white py-8  p-4 ">
 
 
       <Container>
-        <div className="mb-12 p-6 sm:p-8  ">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-xl sm:text-2xl font-extrabold text-white mb-3">
-              Stay Updated with Our Newsletter
-            </h2>
-            <p className="text-white text-[15px] max-w-2xl mx-auto mb-6">
-              Subscribe to receive the latest job opportunities, industry news,
-              and healthcare staffing insights directly to your inbox.
-            </p>
-
-            {isSubscribed ? (
-              <div className="bg-green-50 text-green-700 p-4 rounded-lg">
-                Thank you for subscribing! You'll receive our next newsletter
-                soon.
-              </div>
-            ) : (
-              <form
-                onSubmit={handleSubmit}
-                className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto"
-              >
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Enter your email"
-                  className="flex-grow px-4 py-2 border-2 border-blue-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
-                  required
-                />
-                <button
-                  type="submit"
-                  disabled={isLoading}
-                  className="px-6 py-2 bg-blue-500 hover:bg-blue-500 text-white font-medium rounded-lg transition-colors disabled:opacity-70  cursor-pointer"
-                >
-                  {isLoading ? "Subscribing..." : "Subscribe"}
-                </button>
-              </form>
-            )}
-          </div>
-         </div>
+        
         <div className="flex flex-col lg:flex-row justify-around lg:gap-12">
           <div className="flex flex-col items-start">
             <Link to="/">
