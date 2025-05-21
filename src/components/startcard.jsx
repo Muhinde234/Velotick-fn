@@ -15,7 +15,7 @@ const StatCard = ({ title, value, description, color }) => {
     
     },
     green: {
-          bg: 'bg-gradient-to-r from-[#9e326d] to-[#f48e65]',
+      bg: 'bg-gradient-to-r from-[#9e326d] to-[#f48e65]',
       text:'text-white',
       value:'text-white',
       border:'border-none'
