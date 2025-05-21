@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import ScheduleCard from "./schedulecard";
 
 const schedules = Array(20).fill({
@@ -23,9 +24,12 @@ const RecentSchedules = () => {
         ))}
       </div>
       <div className="mt-12 text-center">
-        <button className="px-4 py-2 border border-blue-600 text-blue-600 rounded hover:bg-blue-50 transition cursor-pointer ">
+        <Link to="/login">
+          <button className="px-4 py-2 border border-blue-600 text-blue-600 rounded hover:bg-blue-50 transition cursor-pointer ">
           View all schedules
         </button>
+        </Link>
+      
       </div>
     </div>
   );

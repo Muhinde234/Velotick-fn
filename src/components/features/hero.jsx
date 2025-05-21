@@ -1,9 +1,20 @@
+import { useState } from "react";
 import home from "../../assets/home.jpg";
 import CardSection from "../cardsection";
-import RecentSchedules from "../recentschedules";
+
 import Button from "../ui/button";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
+    const [email, setEmail] = useState("");
+  const [isSubscribed, setIsSubscribed] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  
+   const handleSubmit = (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+  
+  };
   return (
     <div>
  
@@ -24,10 +35,12 @@ const Hero = () => {
               long distances, Velotick makes your journey smoother with just a
               few clicks.
             </p>
-
-            <Button className="bg-primary-100 hover:bg-blue-700 text-white rounded-lg font-semibold transition w-full sm:w-[190px] h-[45px] p-2">
+           <Link to="/login">
+              <Button className="bg-primary-100 hover:bg-blue-700 text-white rounded-lg font-semibold transition w-full sm:w-[190px] h-[45px] p-2">
               View Schedules Now
             </Button>
+           </Link>
+         
           </div>
           
       
@@ -49,18 +62,18 @@ const Hero = () => {
               defaultValue="2025-05-25"
             />
             <div className="w-full sm:w-[48%] md:w-auto">
-              <Button className="w-full md:w-[150px] h-[45px] bg-primary-100 text-white font-semibold rounded-lg hover:bg-blue-700 transition">
+              <Link to="/login">
+               <Button className="w-full md:w-[150px] h-[45px] bg-primary-100 text-white font-semibold rounded-lg hover:bg-blue-700 transition">
                 Find schedules
               </Button>
+              </Link>
+             
             </div>
           </div>
         </section>
       </div>
-
-    
-      <div>
-        <section>
-          <div className="text-center mt-16 sm:mt-20 md:mt-24">
+        <section className="mb-32">
+          <div className="text-center mt-16  sm:mt-20 md:mt-24">
             <h1 className="text-primary-100 text-2xl sm:text-3xl font-extrabold">
               Why Choose us
             </h1>
@@ -69,11 +82,45 @@ const Hero = () => {
             <CardSection />
           </div>
         </section>
+      <div className=" p-6 sm:p-8  bg-gray-300 ">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-xl sm:text-2xl font-extrabold text-black mb-3">
+              Stay Updated with Our Newsletter
+            </h2>
+            <p className="text-black text-[15px] max-w-2xl mx-auto mb-6">
+              Subscribe to receive the latest job opportunities, industry news,
+              and healthcare staffing insights directly to your inbox.
+            </p>
+
+            {isSubscribed ? (
+              <div className="bg-green-50 text-green-700 p-4 rounded-lg">
+                Thank you for subscribing! You'll receive our next newsletter
+                soon.
+              </div>
+            ) : (
+              <form
+                onSubmit={handleSubmit}
+                className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto"
+              >
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Enter your email"
+                  className="flex-grow px-4 py-2 border-2 border-black rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition-all"
+                  required
+                />
+                <button
+                  type="submit"
+                  disabled={isLoading}
+                  className="px-6 py-2 bg-white hover:bg-white text-black font-medium rounded-lg transition-colors disabled:opacity-70  cursor-pointer"
+                >
+                  {isLoading ? "Subscribing..." : "Subscribe"}
+                </button>
+              </form>
+            )}
+          </div>
         
-      
-        <section>
-          <RecentSchedules />
-        </section>
       </div>
     </div>
   );

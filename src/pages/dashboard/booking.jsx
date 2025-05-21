@@ -4,6 +4,7 @@ import Button from "../../components/ui/button";
 import Topsection from "../../components/ui/topsection";
 import { useState } from "react";
 import Warningmodel from "../../components/ui/warningmodel";
+import SEO from "../../components/ui/seo";
 
 export default function Bookings() {
   const [showWarning, setShowWarning] = useState(false);
@@ -28,6 +29,7 @@ export default function Bookings() {
 
   return (
     <div className="p-6 bg-white ml-0 md:ml-64 min-h-screen">
+       <SEO title="bookings" description="bookings" content="bookings" />
       {showWarning && (
         <Warningmodel 
           onCancel={handleCancelDelete} 

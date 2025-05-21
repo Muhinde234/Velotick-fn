@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Input from "../ui/input";
 import Button from "../ui/button";
 import { z } from "zod";
+import SEO from "../ui/seo";
 
 const passwordSchema = z.object({
   password: z.string()
@@ -50,6 +51,7 @@ const ChangePassword = () => {
 
   return (
     <div className="flex flex-col justify-center items-center gap-10 h-screen">
+       <SEO title=" change-password" description="change-password" content="change-password" />
       <div className="min-w-[540px] border border-gray-300 rounded-lg p-6">
         <h1 className="text-2xl text-center mb-8">Change Password</h1>
         
@@ -57,7 +59,7 @@ const ChangePassword = () => {
           <div className="space-y-4">
             <Input
               label="New Password"
-              id="password"
+              id="password"w
               type="password"
               value={form.password}
               onChange={handleChange}

@@ -14,8 +14,9 @@ import {
 
 export const links = [
   { path: "/", label: "Home" },
-  { path: "/schedule", label: "Schedules" },
-  { path: "/routes", label: "Routes" },
+  // { path: "/schedule", label: "Schedules" },
+  {path:"/about",label:"About Us"},
+  { path: "/route", label: "Routes" },
   { path: "/terms", label: "Terms & Conditions" }
 ];
 

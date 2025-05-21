@@ -5,6 +5,7 @@ import Button from "../ui/button";
 import { Link, Navigate } from "react-router-dom";
 import { useLogin } from "../../hooks/api_hooks/useAuth";
 import { useForm } from "react-hook-form";
+import SEO from "../ui/seo";
 
 
 const LoginPage = () => {
@@ -35,6 +36,7 @@ const LoginPage = () => {
 
   return (
     <Container className="h-screen flex flex-col justify-center items-center mt-12">
+       <SEO title="Login page" description="Login page" content="Login page" />
       <div className="min-w-[540px] border border-gray-300 rounded-lg p-6">
         <div className="flex justify-center items-center gap-[16px]">
           <img className="w-[48px] h-[48px]" src={car} alt="logo" />
@@ -79,6 +81,7 @@ const LoginPage = () => {
             id="password"
             type="password"
             placeholder="Enter your password"
+            required
             {
               ...register("password", {
                 required: "Password is required",

@@ -1,9 +1,11 @@
 import Button from "../../components/ui/button";
+import SEO from "../../components/ui/seo";
 import Topsection from "../../components/ui/topsection";
 
 const Routes = () => {
   return (
     <div className="p-6 bg-white ml-0 md:ml-64 min-h-screen">
+       <SEO title="Routes Management dashboard " description="Routes Management dashboard" content="Routes Management dashboard" />
       <div>
         <Topsection />
       </div>

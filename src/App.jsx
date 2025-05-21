@@ -5,7 +5,6 @@ import NotFound from './pages/NotFound'
 import Home from './pages/home'
 import LoginPage from './components/forms/login'
 import RegisterPage from './components/forms/register'
-import Schedule from './pages/schedules'
 import Dashboardlayout from './layouts/dashboardlayout'
 import Bookings from './pages/dashboard/booking'
 import Scheduledashboard from './pages/dashboard/schedule'
@@ -16,6 +15,11 @@ import { UserProvider } from './context/userContext'
 import Bus from './pages/dashboard/bus'
 import Users from './pages/dashboard/users'
 import Report from './pages/dashboard/report'
+import About from './pages/about'
+import Route from './pages/route'
+import Terms from './pages/terms'
+import Conditions from './pages/conditions'
+
 
 
 function App() {
@@ -31,9 +35,19 @@ function App() {
           element:<Home/>
         },
         {
-          path:'schedule',
-          element:<Schedule/>
+          path:'about',
+          element:<About/>
         },
+        {
+          path:"route",
+          element:<Route/>
+        },
+        {
+          path:"terms",
+          element:<Terms/>
+        },
+
+     
        
       ]
   
@@ -42,6 +56,10 @@ function App() {
       path:"login",
       element:<LoginPage/>
     },
+     {
+        path:"conditions",
+        element:<Conditions/>
+      },
     {
       path:"register",
       element:<RegisterPage/>
