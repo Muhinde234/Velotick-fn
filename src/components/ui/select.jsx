@@ -1,5 +1,3 @@
-
-
 const Select = ({ label, id, options, value, onChange }) => {
   return (
     <div className="mb-4 w-full">

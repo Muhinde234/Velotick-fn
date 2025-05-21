@@ -66,7 +66,11 @@ const Bus = () => {
   };
   return (
     <div className="p-6 bg-white ml-0 md:ml-64 max-h-screen ">
-       <SEO title="Bus Management dashboard" description="Bus Management dashboard" content="Bus Management dashboard" />
+      <SEO
+        title="Bus Management dashboard"
+        description="Bus Management dashboard"
+        content="Bus Management dashboard"
+      />
       {showWarning && (
         <Warningmodel
           onCancel={handleCancelDelete}

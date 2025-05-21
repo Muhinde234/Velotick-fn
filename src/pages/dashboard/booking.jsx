@@ -29,18 +29,18 @@ export default function Bookings() {
 
   return (
     <div className="p-6 bg-white ml-0 md:ml-64 min-h-screen">
-       <SEO title="bookings" description="bookings" content="bookings" />
+      <SEO title="bookings" description="bookings" content="bookings" />
       {showWarning && (
-        <Warningmodel 
-          onCancel={handleCancelDelete} 
-          onConfirm={handleConfirmDelete} 
+        <Warningmodel
+          onCancel={handleCancelDelete}
+          onConfirm={handleConfirmDelete}
         />
       )}
-     
+
       <div>
-        <Topsection/>
+        <Topsection />
       </div>
- 
+
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
         <div>
           <h1 className="text-2xl font-bold">All Bookings list</h1>
@@ -57,17 +57,28 @@ export default function Bookings() {
         </div>
       </div>
 
-   
       <div className="overflow-x-auto rounded-lg border border-gray-200">
         <table className="min-w-full divide-y divide-gray-200">
           <thead className="bg-gray-100">
             <tr>
-              <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider sm:px-6">Passenger</th>
-              <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider sm:px-6">Route</th>
-              <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider sm:px-6">Date</th>
-              <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider sm:px-6">Time</th>
-              <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider sm:px-6">Seats</th>
-              <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider sm:px-6">Action</th>
+              <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider sm:px-6">
+                Passenger
+              </th>
+              <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider sm:px-6">
+                Route
+              </th>
+              <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider sm:px-6">
+                Date
+              </th>
+              <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider sm:px-6">
+                Time
+              </th>
+              <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider sm:px-6">
+                Seats
+              </th>
+              <th className="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider sm:px-6">
+                Action
+              </th>
             </tr>
           </thead>
           <tbody className="bg-white divide-y divide-gray-200">
@@ -77,16 +88,24 @@ export default function Bookings() {
                   <div className="font-medium text-gray-900">{b.passenger}</div>
                   <div className="text-gray-500 text-xs">{b.phone}</div>
                 </td>
-                <td className="px-4 py-4 whitespace-nowrap sm:px-6">{b.route}</td>
-                <td className="px-4 py-4 whitespace-nowrap sm:px-6">{b.date}</td>
-                <td className="px-4 py-4 whitespace-nowrap sm:px-6">{b.time}</td>
-                <td className="px-4 py-4 whitespace-nowrap sm:px-6">{b.seats}</td>
+                <td className="px-4 py-4 whitespace-nowrap sm:px-6">
+                  {b.route}
+                </td>
+                <td className="px-4 py-4 whitespace-nowrap sm:px-6">
+                  {b.date}
+                </td>
+                <td className="px-4 py-4 whitespace-nowrap sm:px-6">
+                  {b.time}
+                </td>
+                <td className="px-4 py-4 whitespace-nowrap sm:px-6">
+                  {b.seats}
+                </td>
                 <td className="px-4 py-4 whitespace-nowrap sm:px-6">
                   <div className="flex gap-2">
                     <button className="p-2 bg-emerald-100 text-emerald-700 rounded-full hover:bg-emerald-200 transition-colors">
                       <Pencil size={16} />
                     </button>
-                    <button 
+                    <button
                       className="p-2 bg-red-100 text-red-700 rounded-full hover:bg-red-200 transition-colors"
                       onClick={() => handleDeleteClick(idx)}
                     >

@@ -8,16 +8,14 @@ import {
   Settings,
   Ticket,
   Users,
- 
 } from "lucide-react";
-
 
 export const links = [
   { path: "/", label: "Home" },
   // { path: "/schedule", label: "Schedules" },
-  {path:"/about",label:"About Us"},
+  { path: "/about", label: "About Us" },
   { path: "/route", label: "Routes" },
-  { path: "/terms", label: "Terms & Conditions" }
+  { path: "/terms", label: "Terms & Conditions" },
 ];
 
 export const navItems = [
@@ -27,12 +25,11 @@ export const navItems = [
   { path: "/dashboard/buses", icon: BusFront, label: "Bus Management" },
   { path: "/dashboard/routes", icon: BusFront, label: "Route Management" },
   { path: "/dashboard/users", icon: Users, label: "User Management" },
-  { path: "/dashboard/report", icon: ChartLine, label: "Report" }
+  { path: "/dashboard/report", icon: ChartLine, label: "Report" },
 ];
 
 export const bottomNavItems = [
   { path: "/settings", icon: Settings, label: "Settings" },
   { path: "/support", icon: HelpCircle, label: "Help & Support" },
-  { path: "/logout", icon: LogOut, label: "Logout" }
- 
+  { path: "/logout", icon: LogOut, label: "Logout" },
 ];

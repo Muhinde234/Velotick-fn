@@ -52,7 +52,11 @@ const Users = () => {
   };
   return (
     <div className="p-6 bg-white ml-0 md:ml-64 max-h-screen ">
-       <SEO title="User Management dashboard" description="User Management dashboard" content="User Management dashboard" />
+      <SEO
+        title="User Management dashboard"
+        description="User Management dashboard"
+        content="User Management dashboard"
+      />
       {showWarning && (
         <Warningmodel
           onCancel={handleCancelDelete}
@@ -79,17 +83,17 @@ const Users = () => {
       <div className="bg-gray-200 rounded-lg p-4">
         <div className="flex justify-between items-center mb-4 ">
           <div>
-            <h2  className="text-2xl font-bold">Users List</h2>
+            <h2 className="text-2xl font-bold">Users List</h2>
           </div>
-         
-        <div className="flex items-center gap-3">
-          <Button className="flex items-center px-4 py-2 text-white bg-blue-600 hover:bg-blue-700 rounded-full text-sm font-medium transition-colors whitespace-nowrap">
-            Add <span className="ml-1 text-xl leading-none">＋</span>
-          </Button>
-          <Button className="border px-4 py-2 rounded-full text-sm font-medium border-gray-300 text-gray-700 hover:bg-gray-50 transition-colors whitespace-nowrap">
-            All
-          </Button>
-        </div>
+
+          <div className="flex items-center gap-3">
+            <Button className="flex items-center px-4 py-2 text-white bg-blue-600 hover:bg-blue-700 rounded-full text-sm font-medium transition-colors whitespace-nowrap">
+              Add <span className="ml-1 text-xl leading-none">＋</span>
+            </Button>
+            <Button className="border px-4 py-2 rounded-full text-sm font-medium border-gray-300 text-gray-700 hover:bg-gray-50 transition-colors whitespace-nowrap">
+              All
+            </Button>
+          </div>
         </div>
       </div>
     </div>

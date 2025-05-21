@@ -1,34 +1,26 @@
-import { 
-  Book, 
-  Shield, 
-  CreditCard, 
-  X, 
-  User, 
-  Info, 
-  
-} from 'lucide-react';
-import Logo from './ui/logo';
-import { Link } from 'react-router-dom';
+import { Book, Shield, CreditCard, X, User, Info } from "lucide-react";
+import Logo from "./ui/logo";
+import { Link } from "react-router-dom";
 
 const TermsSidebar = ({ className, isMobileOpen, onMobileClose }) => {
   const sections = [
-    { id: 'general', title: 'General Terms', icon: <Book size={18} /> },
-    { id: 'booking', title: 'Booking Policy', icon: <Shield size={18} /> },
-    { id: 'payments', title: 'Payments', icon: <CreditCard size={18} /> },
-    { id: 'cancellations', title: 'Cancellations', icon: <X size={18} /> },
-    { id: 'user', title: 'User Responsibilities', icon: <User size={18} /> },
-    { id: 'privacy', title: 'Privacy', icon: <Shield size={18} /> },
-    { id: 'contact', title: 'Contact Info', icon: <Info size={18} /> }
+    { id: "general", title: "General Terms", icon: <Book size={18} /> },
+    { id: "booking", title: "Booking Policy", icon: <Shield size={18} /> },
+    { id: "payments", title: "Payments", icon: <CreditCard size={18} /> },
+    { id: "cancellations", title: "Cancellations", icon: <X size={18} /> },
+    { id: "user", title: "User Responsibilities", icon: <User size={18} /> },
+    { id: "privacy", title: "Privacy", icon: <Shield size={18} /> },
+    { id: "contact", title: "Contact Info", icon: <Info size={18} /> },
   ];
 
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
     if (element) {
       window.scrollTo({
-        top: element.offsetTop - 100, 
-        behavior: 'smooth',
+        top: element.offsetTop - 100,
+        behavior: "smooth",
       });
-      
+
       if (isMobileOpen) {
         onMobileClose();
       }
@@ -36,12 +28,13 @@ const TermsSidebar = ({ className, isMobileOpen, onMobileClose }) => {
   };
 
   return (
-    <aside 
+    <aside
       className={`
         bg-primary-100 min-h-screen transition-all duration-300 ease-in-out
-        ${isMobileOpen 
-          ? "fixed inset-y-0 left-0 z-40 w-64 shadow-lg" 
-          : "hidden lg:block w-64 fixed self-start"
+        ${
+          isMobileOpen
+            ? "fixed inset-y-0 left-0 z-40 w-64 shadow-lg"
+            : "hidden lg:block w-64 fixed self-start"
         }
         ${className}
       `}
@@ -61,13 +54,12 @@ const TermsSidebar = ({ className, isMobileOpen, onMobileClose }) => {
           </button>
         </div>
       )}
-      
+
       <div className="p-6">
         <Link to="/">
-         <Logo/>
+          <Logo />
         </Link>
-        
-      
+
         <nav className="space-y-1">
           {sections.map((section) => (
             <button

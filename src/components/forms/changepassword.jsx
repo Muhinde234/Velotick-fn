@@ -5,21 +5,25 @@ import Button from "../ui/button";
 import { z } from "zod";
 import SEO from "../ui/seo";
 
-const passwordSchema = z.object({
-  password: z.string()
-    .min(1, { message: "Password is required" })
-    .min(8, { message: "Password must be at least 8 characters" }),
-  confirmPassword: z.string()
-    .min(1, { message: "Please confirm your password" })
-}).refine((data) => data.password === data.confirmPassword, {
-  message: "Passwords don't match",
-  path: ["confirmPassword"]
-});
+const passwordSchema = z
+  .object({
+    password: z
+      .string()
+      .min(1, { message: "Password is required" })
+      .min(8, { message: "Password must be at least 8 characters" }),
+    confirmPassword: z
+      .string()
+      .min(1, { message: "Please confirm your password" }),
+  })
+  .refine((data) => data.password === data.confirmPassword, {
+    message: "Passwords don't match",
+    path: ["confirmPassword"],
+  });
 
 const ChangePassword = () => {
   const [form, setForm] = useState({
     password: "",
-    confirmPassword: ""
+    confirmPassword: "",
   });
   const [errors, setErrors] = useState({});
 
@@ -34,12 +38,12 @@ const ChangePassword = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const result = passwordSchema.safeParse(form);
-    
+
     if (!result.success) {
       const formattedErrors = result.error.flatten().fieldErrors;
       setErrors({
         password: formattedErrors.password?.[0] || "",
-        confirmPassword: formattedErrors.confirmPassword?.[0] || ""
+        confirmPassword: formattedErrors.confirmPassword?.[0] || "",
       });
       return;
     }
@@ -51,15 +55,20 @@ const ChangePassword = () => {
 
   return (
     <div className="flex flex-col justify-center items-center gap-10 h-screen">
-       <SEO title=" change-password" description="change-password" content="change-password" />
+      <SEO
+        title=" change-password"
+        description="change-password"
+        content="change-password"
+      />
       <div className="min-w-[540px] border border-gray-300 rounded-lg p-6">
         <h1 className="text-2xl text-center mb-8">Change Password</h1>
-        
+
         <form onSubmit={handleSubmit}>
           <div className="space-y-4">
             <Input
               label="New Password"
-              id="password"w
+              id="password"
+              w
               type="password"
               value={form.password}
               onChange={handleChange}
@@ -78,7 +87,7 @@ const ChangePassword = () => {
               required
             />
           </div>
-          
+
           <div className="mt-8 text-center">
             <Button
               type="submit"

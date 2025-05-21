@@ -64,11 +64,9 @@ const Aside = () => {
       <div className="mb-6">
         <p className="font-bold mb-1">Kigali - Uganda</p>
         <div className="flex gap-2">
-            <p className="text-sm text-gray-600">Departure: 10:00 am</p>
-        <p className="text-sm text-gray-600">Arrival: 12:00 am</p>
-
+          <p className="text-sm text-gray-600">Departure: 10:00 am</p>
+          <p className="text-sm text-gray-600">Arrival: 12:00 am</p>
         </div>
-        
       </div>
 
       <div className="w-full h-60 flex items-center justify-center border border-gray-300 rounded-lg mb-6">
@@ -79,14 +77,10 @@ const Aside = () => {
         <p className="font-medium">Price: 2,000 Frw/Seat</p>
         <p className="font-medium">Selected seats: 4</p>
         <p className=" text-lg">Total price: 8,000 Frw</p>
-        <Button
-        className="text-primary-90 border border-primary-80 p-2 rounded-sm cursor-pointer">
-            continue to booking
-
+        <Button className="text-primary-90 border border-primary-80 p-2 rounded-sm cursor-pointer">
+          continue to booking
         </Button>
       </div>
-
-     
     </div>
   );
 };
