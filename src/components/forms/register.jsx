@@ -8,15 +8,9 @@ import Button from "../ui/button";
 import { useRegister } from "../../hooks/api_hooks/useAuth";
 import SEO from "../ui/seo";
 
-
-
-
-
-
-
-//API 
+//API
 const RegisterPage = () => {
-  const {mutate} = useRegister()
+  const { mutate } = useRegister();
   const countries = ["Rwanda", "Kenya", "Uganda", "Tanzania", "Burundi"];
 
   const {
@@ -26,18 +20,17 @@ const RegisterPage = () => {
     formState: { errors, isSubmitting },
   } = useForm();
 
-  
-
   const onSubmit = (data) => {
-    mutate(data)
-   
+    mutate(data);
   };
-
-
 
   return (
     <Container className="h-screen flex flex-col justify-center items-center mt-12">
-       <SEO title="Register page" description="Register page" content="Register page" />
+      <SEO
+        title="Register page"
+        description="Register page"
+        content="Register page"
+      />
       <div className="min-w-[540px] border border-gray-300 rounded-lg p-6">
         <div className="flex justify-center items-center gap-[16px]">
           <img className="w-[48px] h-[48px]" src={car} alt="logo" />

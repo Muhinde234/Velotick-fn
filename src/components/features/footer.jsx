@@ -5,14 +5,9 @@ import { links } from "../../helpers/constants";
 import { useState } from "react";
 
 const Footer = () => {
-
-
   return (
     <footer className="bg-[#2356CF] text-white py-8  p-4 ">
-
-
       <Container>
-        
         <div className="flex flex-col lg:flex-row justify-around lg:gap-12">
           <div className="flex flex-col items-start">
             <Link to="/">
@@ -62,7 +57,6 @@ const Footer = () => {
             <p>Mobile Access</p>
             <p>24/7 customersupport</p>
           </div>
-        
         </div>
 
         <div className="mt-8 pt-6 border-t border-blue-400 text-center text-sm text-gray-300">

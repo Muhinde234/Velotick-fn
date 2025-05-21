@@ -1,6 +1,3 @@
-
-
-
 const BookingCard = ({ title, value, change }) => {
   return (
     <div className="bg-white rounded-lg shadow p-6 flex flex-col">

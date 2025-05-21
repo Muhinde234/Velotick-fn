@@ -4,6 +4,7 @@ import CardSection from "../cardsection";
 
 import Button from "../ui/button";
 import { Link } from "react-router-dom";
+import TripCard from "../ui/tripcard";
 
 const Hero = () => {
     const [email, setEmail] = useState("");
@@ -72,6 +73,9 @@ const Hero = () => {
           </div>
         </section>
       </div>
+        <div className="  flex items-center justify-center p-4">
+      <TripCard trips="500K+" rating={4.9} departures="99%" />
+    </div>
         <section className="mb-32">
           <div className="text-center mt-16  sm:mt-20 md:mt-24">
             <h1 className="text-primary-100 text-2xl sm:text-3xl font-extrabold">

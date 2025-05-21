@@ -1,12 +1,5 @@
+const Container = ({ className, children }) => {
+  return <div className={`container mx-auto ${className}`}>{children}</div>;
+};
 
-
-const Container = ({className,children}) => {
-  return (
-    <div className={`container mx-auto ${className}`}>
-        {children}
-
-    </div>
-  )
-}
-
-export default Container
+export default Container;

@@ -1,17 +1,20 @@
 import { CheckCircle } from "lucide-react";
 import Container from "../components/ui/container";
 import SEO from "../components/ui/seo";
-
+import about from "../assets/about.jpg";
 
 const About = () => {
   return (
     <div>
-       <SEO title="About page" description="About page" content="About page" />
-      <div className="">
+      <SEO title="About page" description="About page" content="About page" />
+      <div>
         <Container className="pt-32">
-          <div className="flex  flex-col justify-center items-center ">
+          <div className="flex justify-center items-center">
+            <img src={about} />
+          </div>
+          <div className="flex flex-col justify-center items-center mt-3 ">
             <div className="max-w-2xl text-center">
-              <h1 className=" text-2xl lg:text-4xl foont-bold mb-3 text-primary-100 ">
+              <h1 className=" text-3xl font-bold lg:text-4xl foont-bold mb-3 text-primary-100 ">
                 About us
               </h1>
               <p className="pt-3 mb-4 text-gray-500">
@@ -26,9 +29,11 @@ const About = () => {
       </div>
 
       <Container className="mt-32 mb-32">
-        <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-18 mt-10">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-18 mt-10">
           <div className="flex flex-col ">
-            <h1 className="text-3xl text-primary-100 font-bold mb-4">Our mission</h1>
+            <h1 className="text-3xl text-primary-100 font-bold mb-4">
+              Our mission
+            </h1>
             <p className="text-gray-500">
               To improve passenger experience, minimizes fraud, and streamlines
               operations for transport companies using modern technology.
@@ -55,7 +60,9 @@ const About = () => {
             </ul>
           </div>
           <div className="flex flex-col  ">
-            <h1 className="text-3xl font-bold text-primary-100  mb-4">Our vision</h1>
+            <h1 className="text-3xl font-bold text-primary-100  mb-4">
+              Our vision
+            </h1>
             <p className="text-gray-500">
               To lead digital transportation in East Africa by making
               cross-border travel easier, safer, and smarter for passengers and
@@ -84,11 +91,6 @@ const About = () => {
           </div>
         </div>
       </Container>
-    
-
-        
-      
-      
     </div>
   );
 };

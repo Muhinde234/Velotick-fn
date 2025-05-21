@@ -9,10 +9,6 @@ import Button from "../../components/ui/button";
 import avatar from "../../assets/avatar.png";
 import SEO from "../../components/ui/seo";
 
-
-
-
-
 const Dashboard = () => {
   const stats = [
     {
@@ -49,7 +45,11 @@ const Dashboard = () => {
 
   return (
     <div className="p-6 bg-white ml-0 md:ml-64 max-h-screen ">
-       <SEO title="Admin dashboard" description="Admin dashboard" content=" Admin dashboard" />
+      <SEO
+        title="Admin dashboard"
+        description="Admin dashboard"
+        content=" Admin dashboard"
+      />
       <div>
         <Topsection />
       </div>
@@ -73,29 +73,29 @@ const Dashboard = () => {
             <div className="flex justify-between ">
               <div className="flex flex-col">
                 <p className="text-xl font-medium">Bus List</p>
-                <p className="text-gray-600 text-sm">Today's Active Buses 120</p>
+                <p className="text-gray-600 text-sm">
+                  Today's Active Buses 120
+                </p>
               </div>
-             <select className="rounded-full  text-xl border px-4  py-1 text-sm">
+              <select className="rounded-full  text-xl border px-4  py-1 text-sm">
                 <option>Active</option>
               </select>
-     
-
             </div>
             <div className="flex  gap-10">
-    
-              <img src={avatar} alt="bus" className="w-10 h-10 inline bg-blue-300" />
-                <div className="flex  flex-col  pr-6 border-r border-gray-500 ">
-               <p className="font-bold">IGIRIMPUHWE Dositha</p>
-              <p className="text-sm text-gray-600">Driver</p>
-              
+              <img
+                src={avatar}
+                alt="bus"
+                className="w-10 h-10 inline bg-blue-300"
+              />
+              <div className="flex  flex-col  pr-6 border-r border-gray-500 ">
+                <p className="font-bold">IGIRIMPUHWE Dositha</p>
+                <p className="text-sm text-gray-600">Driver</p>
+              </div>
+              <div className="flex flex-col">
+                <h1 className="text-xl">Seats</h1>
+                <p className="text-gray-600">Fully packed</p>
+              </div>
             </div>
-            <div className="flex flex-col">
-              <h1 className="text-xl">Seats</h1>
-              <p className="text-gray-600">Fully packed</p>
-               
-            </div>
-            </div>
-           
           </div>
         </div>
 

@@ -1,6 +1,6 @@
 import { Link, NavLink, useLocation } from "react-router-dom";
-import {navItems } from "../../helpers/constants";
-import {bottomNavItems }from "../../helpers/constants"
+import { navItems } from "../../helpers/constants";
+import { bottomNavItems } from "../../helpers/constants";
 import Logo from "../ui/logo";
 
 const Sidebar = () => {

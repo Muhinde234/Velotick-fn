@@ -1,6 +1,9 @@
 const StatCard = ({ title, value, change, icon, bgColor }) => {
   return (
-    <div className={`rounded-xl p-4 text-white w-full`} style={{ background: bgColor }}>
+    <div
+      className={`rounded-xl p-4 text-white w-full`}
+      style={{ background: bgColor }}
+    >
       <div className="flex justify-between items-center">
         <div>
           <p className="text-sm font-light">{title}</p>
