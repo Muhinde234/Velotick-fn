@@ -1,4 +1,4 @@
-const Select = ({ label, id, options, value, onChange }) => {
+const Select = ({ label, id, options=["Rwanda","Uganda","Burundi"], value, onChange }) => {
   return (
     <div className="mb-4 w-full">
       <label htmlFor={id} className="block text-sm font-medium text-gray-700">
