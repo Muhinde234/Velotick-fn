@@ -2,34 +2,54 @@ import car from "../../assets/car.png";
 import Input from "../ui/input";
 import Container from "../ui/container";
 import Button from "../ui/button";
-import { Link, Navigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useLogin } from "../../hooks/api_hooks/useAuth";
 import { useForm } from "react-hook-form";
 import SEO from "../ui/seo";
+import { useUser } from "../../context/userContext";
 
 const LoginPage = () => {
-  const { mutate } = useLogin();
+  const { mutate, isPending } = useLogin();
+  const { login } = useUser();
+  const navigate = useNavigate();
 
   const {
     register,
     handleSubmit,
-    watch,
-    formState: { errors, isSubmitting },
+    formState: { errors },
+    setError,
   } = useForm();
 
   const onSubmit = (data) => {
     mutate(data, {
-      onSuccess: (data) => {
-        // handle success
-        const { user } = data;
-        console.log(user.firstname);
+      onSuccess: (response) => {
+        const { user, token } = response;
+        login(user, token); // Call the login function from context
+        
+        // Redirect based on role
+        switch(user.role) {
+          case 'admin':
+            navigate("/dashboard/home");
+            break;
+          case 'manager':
+            navigate("/dashboard/schedules");
+            break;
+          case 'client':
+            navigate("/dashboard/booking");
+            break;
+          default:
+            navigate("/dashboard");
+        }
       },
       onError: (error) => {
-        console.log(error);
+        // Handle API errors
+        const errorMessage = error.response?.data?.message || "Login failed. Please try again.";
+        setError("server", {
+          type: "manual",
+          message: errorMessage,
+        });
       },
     });
-    login();
-    Navigate("/dashboard");
   };
 
   return (
@@ -52,7 +72,7 @@ const LoginPage = () => {
 
         {errors.server && (
           <div className="mb-4 p-3 bg-red-100 text-red-700 rounded-md text-sm">
-            {errors.server}
+            {errors.server.message}
           </div>
         )}
 
@@ -110,9 +130,9 @@ const LoginPage = () => {
             <Button
               type="submit"
               className="w-full bg-[#2356CF] text-white p-2 rounded-lg mt-2 hover:bg-[#1a4bb5] transition-colors cursor-pointer"
-              disabled={isSubmitting}
+              disabled={isPending}
             >
-              {isSubmitting ? "Logging in..." : "Login"}
+              {isPending ? "Logging in..." : "Login"}
             </Button>
           </div>
         </form>
