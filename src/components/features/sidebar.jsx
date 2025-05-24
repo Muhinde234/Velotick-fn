@@ -10,7 +10,7 @@ const Sidebar = () => {
 
   return (
     <div className="w-64 min-h-screen bg-gradient-to-r from-[#10062b] to-[#420129] text-white   p-4 flex flex-col fixed">
-      <Link to="/dashboard">
+      <Link to="/dashboard/home">
         <Logo />
       </Link>
       <nav className="flex-1">

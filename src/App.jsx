@@ -30,13 +30,14 @@ const ProtectedRoute = ({ children, allowedRoles = [] }) => {
     return <Navigate to="/login" replace />;
   }
 
-  if (allowedRoles.length > 0 && !allowedRoles.includes(user?.role)) {
+  if (user && allowedRoles.length > 0 && !allowedRoles.includes(user.roles)) {
     return <Navigate to="/unauthorized" replace />;
   }
 
   return children;
 };
 
+// Create dynamic dashboard routes based on role
 const createDashboardRoutes = (role) => {
   const baseRoutes = [
     {
@@ -92,6 +93,7 @@ const createDashboardRoutes = (role) => {
   return baseRoutes;
 };
 
+// Main App Component
 function App() {
   const router = createBrowserRouter([
     {
@@ -99,61 +101,34 @@ function App() {
       element: <Guestlayout />,
       errorElement: <NotFound />,
       children: [
+        { path: "", element: <Home /> },
+        { path: "about", element: <About /> },
+        { path: "route", element: <Route /> },
+        { path: "terms", element: <Terms /> },
+     
+      ],
+    },
+       { path: "conditions", element: <Conditions /> },
+        { path: "unauthorized", element: <Unauthorized /> },
+        { path: "login", element: <LoginPage /> },
+        { path: "register", element: <RegisterPage /> },
+    {
+      path: "dashboard",
+      element: (
+        <ProtectedRoute>
+          <Dashboardlayout />
+        </ProtectedRoute>
+      ),
+      children: [
         {
-          path: "",
-          element: <Home />,
-        },
-        {
-          path: "about",
-          element: <About />,
-        },
-        {
-          path: "route",
-          element: <Route />,
-        },
-        {
-          path: "terms",
-          element: <Terms />,
-        },
-        {
-          path: "conditions",
-          element: <Conditions />,
-        },
-        {
-          path: "login",
-          element: <LoginPage />,
-        },
-        {
-          path: "register",
-          element: <RegisterPage />,
-        },
-        {
-          path: "changepassword",
-          element: <ChangePassword />,
-        },
-        {
-          path: "unauthorized",
-          element: <Unauthorized />,
-        },
-        {
-          path: "dashboard",
+          index: true,
           element: (
-            <ProtectedRoute>
-              <Dashboardlayout />
+            <ProtectedRoute allowedRoles={['admin', 'manager', 'user']}>
+              <Dashboard />
             </ProtectedRoute>
           ),
-          children: [
-            {
-              index: true,
-              element: (
-                <ProtectedRoute allowedRoles={['admin', 'manager', 'client']}>
-                  <Dashboard />
-                </ProtectedRoute>
-              )
-            },
-            ...createDashboardRoutes('admin') 
-          ]
-        }
+        },
+        ...createDashboardRoutes('admin'), 
       ],
     },
   ]);
