@@ -1,16 +1,24 @@
 import { useState } from "react";
 import Button from "../components/ui/button";
 import { createSchedule } from "../api/schedules/schedules_api";
+import { useCreateSchedule } from "../hooks/api_hooks/useSchedules";
 
-const AddScheduleModal = ({ isOpen, onClose, onScheduleAdded }) => {
+const AddScheduleModal = ({
+  isOpen,
+  onClose,
+  onScheduleAdded,
+  buses,
+  routes,
+}) => {
   const [formData, setFormData] = useState({
-    busNumber: "",
-    route: "",
-    departureTime: "",
-    arrivalTime: "",
-    driver: "",
-    status: "On Time",
+    bus_id: "",
+    route_id: "",
+    departure_time: "",
+    arrival_time: "",
   });
+
+  const { mutate, isPending } = useCreateSchedule();
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState(null);
 
@@ -24,28 +32,29 @@ const AddScheduleModal = ({ isOpen, onClose, onScheduleAdded }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    setError(null);
-
-    try {
-      const newSchedule = await createSchedule(formData);
-      onScheduleAdded(newSchedule);
-      onClose();
-    } catch (err) {
-      setError(err.message || "Failed to create schedule");
-    } finally {
-      setIsSubmitting(false);
-    }
+    mutate(formData, {
+      onSuccess: () => {
+        console.log("Schedule Added successfully");
+        // setFormData(for);
+      },
+      onError: (error) => {
+        console.error("Error inside handleSubmit: ", error.message);
+      },
+    });
+    // setFormData(initialFormData);
   };
 
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black/50 backdrop-opacity-sm  flex items-center justify-center z-50">
+    <div className="fixed inset-0 bg-black/50 backdrop-opacity-sm flex items-center justify-center z-50">
       <div className="bg-white rounded-lg p-6 w-full max-w-md">
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-xl font-bold">Add New Schedule</h2>
-          <button onClick={onClose} className="text-gray-500 hover:text-gray-700">
+          <button
+            onClick={onClose}
+            className="text-gray-500 hover:text-gray-700"
+          >
             &times;
           </button>
         </div>
@@ -60,30 +69,28 @@ const AddScheduleModal = ({ isOpen, onClose, onScheduleAdded }) => {
           <div className="space-y-4">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
-                Bus Number
+                Bus
               </label>
-              <input
-                type="text"
-                name="busNumber"
-                value={formData.busNumber}
-                onChange={handleChange}
-                required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
+              <select id="bus_id" name="bus_id" onChange={handleChange}>
+                {buses.map((bus, idx) => (
+                  <option key={idx} value={bus.id}>
+                    {bus.plate_number}
+                  </option>
+                ))}
+              </select>
             </div>
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 Route
               </label>
-              <input
-                type="text"
-                name="route"
-                value={formData.route}
-                onChange={handleChange}
-                required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
+              <select id="route_id" name="route_id" onChange={handleChange}>
+                {routes.map((route, idx) => (
+                  <option key={idx} value={route.id}>
+                    {route.origin + " - " + route.destination}
+                  </option>
+                ))}
+              </select>
             </div>
 
             <div>
@@ -92,8 +99,8 @@ const AddScheduleModal = ({ isOpen, onClose, onScheduleAdded }) => {
               </label>
               <input
                 type="datetime-local"
-                name="departureTime"
-                value={formData.departureTime}
+                name="departure_time"
+                value={formData.departure_time}
                 onChange={handleChange}
                 required
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
@@ -106,42 +113,12 @@ const AddScheduleModal = ({ isOpen, onClose, onScheduleAdded }) => {
               </label>
               <input
                 type="datetime-local"
-                name="arrivalTime"
-                value={formData.arrivalTime}
+                name="arrival_time"
+                value={formData.arrival_time}
                 onChange={handleChange}
                 required
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               />
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                Driver
-              </label>
-              <input
-                type="text"
-                name="driver"
-                value={formData.driver}
-                onChange={handleChange}
-                required
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
-            </div>
-
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">
-                Status
-              </label>
-              <select
-                name="status"
-                value={formData.status}
-                onChange={handleChange}
-                className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-              >
-                <option value="On Time">On Time</option>
-                <option value="Delayed">Delayed</option>
-                <option value="Cancelled">Cancelled</option>
-              </select>
             </div>
           </div>
 
@@ -155,10 +132,10 @@ const AddScheduleModal = ({ isOpen, onClose, onScheduleAdded }) => {
             </Button>
             <Button
               type="submit"
-              disabled={isSubmitting}
+              disabled={isPending}
               className="flex items-center px-4 py-2 text-white bg-primary-100 hover:bg-primary-80 rounded-full text-sm font-medium transition-colors disabled:opacity-50"
             >
-              {isSubmitting ? "Adding..." : "Add Schedule"}
+              {isPending ? "Adding..." : "Add Schedule"}
             </Button>
           </div>
         </form>

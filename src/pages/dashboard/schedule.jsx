@@ -2,53 +2,47 @@ import { useEffect, useState } from "react";
 import Button from "../../components/ui/button";
 import SEO from "../../components/ui/seo";
 import Topsection from "../../components/ui/topsection";
-import { getSchedule, deleteSchedule } from "../../api/schedules/schedules_api";
+import { getSchedule, deleteSchedule, getSchedules } from "../../api/schedules/schedules_api";
 import AddScheduleModal from "../../components/addschedulemodel";
+import { useSchedules } from "../../hooks/api_hooks/useSchedules";
+import { useBuses } from "../../hooks/api_hooks/useBuses";
+import { useRoutes } from "../../hooks/api_hooks/useRoutes";
+import { Pencil, Trash2 } from "lucide-react";
 
 const Scheduledashboard = () => {
-  const [schedule, setSchedule] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [showWarning, setShowWarning] = useState(false);
 
-  useEffect(() => {
-    const fetchSchedule = async () => {
-      try {
-        const data = await getSchedule();
-        console.log("Fetched Schedule", data);
-        setSchedule(Array.isArray(data) ? data : []);
-        setLoading(false);
-      } catch (err) {
-        setError(err.message);
-        setLoading(false);
-        setSchedule([]);
-      }
-    };
-    fetchSchedule();
-  }, []);
+  const { data, isLoading, isError, error } = useSchedules();  
+  const {data: buses, isLoading: isBusesLoading, isError: isBusesError, error: busesError } = useBuses();
+  const {data: routesData, isLoading: isRoutesLoading, isError: isRoutesError, error: routesError} = useRoutes();
+  
+  const routes = routesData?.data || [];
+  const schedules = data?.data || [];
 
   const handleDelete = async (id) => {
     try {
       await deleteSchedule(id);
-      // Refresh the schedule list after deletion
-      const updatedSchedule = schedule.filter((item) => item.id !== id);
-      setSchedule(updatedSchedule);
+     
+      const updatedSchedule = schedules.filter((item) => item.id !== id);
+   
     } catch (err) {
-      setError(err.message);
+      console.error(err);
+     
     }
   };
 
   const handleScheduleAdded = (newSchedule) => {
-    setSchedule([...schedule, newSchedule]);
-    setIsModalOpen(false);
-  };
+    // setSchedule([...schedule, newSchedule]);
+    // setIsModalOpen(false);
+  };  
 
-  if (loading) {
+  if (isLoading && isBusesLoading && isRoutesLoading) { 
     return <div className="p-6 ml-0 md:ml-64 min-h-screen">Loading...</div>;
   }
 
-  if (error) {
-    return <div className="p-6 ml-0 md:ml-64 min-h-screen">Error: {error}</div>;
+  if (isError && isBusesError && routesError) {
+    return <div className="p-6 ml-0 md:ml-64 min-h-screen">Error: {error + busesError + routesError}</div>;
   }
 
   return (
@@ -92,7 +86,7 @@ const Scheduledashboard = () => {
 
       {/* Schedule Table */}
       <div className="mt-8 overflow-x-auto">
-        {schedule.length === 0 ? (
+        {schedules.length === 0 ? (
           <div className="text-center py-8 text-gray-500">
             No schedules available. Please add a new schedule.
           </div>
@@ -124,19 +118,19 @@ const Scheduledashboard = () => {
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
-              {schedule.map((item) => (
+              {schedules.map((item) => (
                 <tr key={item.id}>
                   <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                    {item.busNumber || "N/A"}
+                    {item.bus || "N/A"}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    {item.route || "N/A"}
+                    {item.origin + " - " + item.destination || "N/A"}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    {new Date(item.departureTime).toLocaleString() || "N/A"}
+                    {new Date(item.departure_time).toLocaleString() || "N/A"}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    {new Date(item.arrivalTime).toLocaleString() || "N/A"}
+                    {new Date(item.arrival_time).toLocaleString() || "N/A"}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                     {item.driver || "N/A"}
@@ -157,17 +151,20 @@ const Scheduledashboard = () => {
                       {item.status || "N/A"}
                     </span>
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                    <button
-                      onClick={() => handleDelete(item.id)}
-                      className="text-red-600 hover:text-red-900 mr-4"
-                    >
-                      Delete
-                    </button>
-                    <button className="text-blue-600 hover:text-blue-900">
-                      Edit
-                    </button>
-                  </td>
+                    <td className="px-4 py-4 whitespace-nowrap sm:px-6">
+                      <div className="flex gap-2">
+                        <button className="p-2 bg-emerald-100 text-emerald-700 rounded-full hover:bg-emerald-200 transition-colors">
+                          <Pencil size={16} />
+                        </button>
+                        <button
+                          onClick={() =>handleDelete (idx)}
+                          className="p-2 bg-red-100 text-red-700 rounded-full hover:bg-red-200 transition-colors"
+                        >
+                          <Trash2 size={16} />
+                        </button>
+                      </div>
+                    
+                    </td>
                 </tr>
               ))}
             </tbody>
@@ -175,9 +172,10 @@ const Scheduledashboard = () => {
         )}
       </div>
 
-      {/* Add Schedule Modal */}
       <AddScheduleModal
         isOpen={isModalOpen}
+        buses={buses}
+        routes={routes}
         onClose={() => setIsModalOpen(false)}
         onScheduleAdded={handleScheduleAdded}
       />
