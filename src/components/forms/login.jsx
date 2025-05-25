@@ -27,7 +27,7 @@ const LoginPage = () => {
         login(user, token); // Call the login function from context
         
         // Redirect based on role
-        switch(user.role) {
+        switch(user.roles[0]) {
           case 'admin':
             navigate("/dashboard/home");
             break;
