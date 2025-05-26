@@ -24,20 +24,26 @@ import { useUser } from "./context/userContext";
 
 // Protected Route Component
 const ProtectedRoute = ({ children, allowedRoles = [] }) => {
-  const { user, token } = useUser();
+  const { user, token, isLoading } = useUser(); 
+
+ 
+  if (isLoading) {
+    return <div>Loading...</div>; // Or a spinner
+  }
+
 
   if (!token) {
     return <Navigate to="/login" replace />;
   }
 
-  if (user && allowedRoles.length > 0 && !allowedRoles.includes(user.roles)) {
+
+  if (allowedRoles.length > 0 && !allowedRoles.includes(user?.role)) {
     return <Navigate to="/unauthorized" replace />;
   }
 
   return children;
 };
 
-// Create dynamic dashboard routes based on role
 const createDashboardRoutes = (role) => {
   const baseRoutes = [
     {
