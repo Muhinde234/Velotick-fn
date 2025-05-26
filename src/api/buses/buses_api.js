@@ -2,40 +2,28 @@ import API from "../axios";
 
 
 export const createBus = async (bus) => {
-  try {
-    const response = await API.post("/buses", bus);
-    return response.data;
-  } catch (error) {
-    console.log(error);
-  }
-}
+  const response = await API.post("/buses", bus);
+  return response.data;
+};
+
 export const getBuses = async () => {
-  try {
-    const response = await API.get("/buses");
-    return response.data;
-  } catch (error) {
-    console.log(error);
-  }
-}
+  const response = await API.get("/buses");
+  return response.data;
+};
 
 export const getBus = async (id) => {
-  try {
-    const response = await API.get(`/buses/${id}`);
-    return response.data;
-  } catch (error) {
-    console.log(error);
-  }
-
-}
-
-
+  const response = await API.get(`/buses/${id}`);
+  return response.data;
+};
 
 export const updateBus = async (id, bus) => {
-  try {
-    const response = await API.patch(`/buses/${id}`, bus);
-    return response.data;
-  } catch (error) {
-    console.log(error);
-  }
+  const response = await API.patch(`/buses/${id}`, bus);
+  return response.data;
+};
+
+export const deleteBus = async (id) => {
+  const response = await API.delete(`/buses/${id}`);
+  return response.data;
 }
+
 
