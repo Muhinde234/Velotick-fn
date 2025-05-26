@@ -1,5 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
-import {login as ApiLogin} from "../../api/auth/authAPI";
+import {login as ApiLogin, register} from "../../api/auth/authAPI";
 import {logout as ApiLogout} from "../../api/auth/authAPI";
 import {register as ApiRegister} from "../../api/auth/authAPI";
 import {useUser} from "../../context/userContext"
@@ -28,13 +28,7 @@ export const useLogout = () => {
 }
 
 export const useRegister = () => {
-    const {register} = useUser();
     return useMutation({
-        mutationFn: async (credentials) => {
-            const data = await ApiRegister(credentials);
-            const {token, user} = data;
-            register(token, user);
-            return data;
-        }
-    })
-}
+        mutationFn: register,
+    });
+};
