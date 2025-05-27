@@ -3,7 +3,7 @@ import Topsection from "../../components/ui/topsection";
 
 const Report = () => {
   return (
-    <div className="p-6 bg-white ml-0 md:ml-64 max-h-screen ">
+    <div className="px-6">
       <SEO title="report" description="report" content="report" />
       <Topsection />
       <div></div>

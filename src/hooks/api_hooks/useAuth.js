@@ -18,10 +18,10 @@ export const useLogin = () => {
 
 
 export const useLogout = () => {
-    const {logout} = useUser;
+    const {logout} = useUser();
     return useMutation({
         mutationFn: async () => {
-            const data = await ApiLogout();
+            await ApiLogout();
             logout();
         }
     })

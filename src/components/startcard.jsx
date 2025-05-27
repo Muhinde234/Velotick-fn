@@ -50,7 +50,7 @@ const StatCard = ({ title, value, description, color }) => {
       </div>
 
       <p className={`mt-2 text-3xl font-semibold ${variant.value}`}>{value}</p>
-      <p className={`mt-1 text-sm ${variant.text}`}>{description}</p>
+      <p className={`mt-1 text-sm ${variant.text} capitalize`}>{description}</p>
     </div>
   );
 };

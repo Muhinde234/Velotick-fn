@@ -7,7 +7,6 @@ const Input = React.forwardRef(
       id,
       required = false,
       showRequiredIndicator = false,
-      options = null,
       className = "",
       ...rest
     },
@@ -24,36 +23,16 @@ const Input = React.forwardRef(
           {label}
           {indicator}
         </label>
-
-        {Array.isArray(options) && options.length > 0 ? (
-          <select
-            id={id}
-            ref={ref}
-            required={required}
-            className={[
-              "w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-gray-600 placeholder:text-sm",
-              className,
-            ].join(" ")}
-            {...rest}
-          >
-            {options.map(({ value, label: optLabel }, idx) => (
-              <option key={idx} value={value}>
-                {optLabel}
-              </option>
-            ))}
-          </select>
-        ) : (
           <input
-            id={id}
-            ref={ref}
-            required={required}
-            className={[
-              "w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-gray-600 placeholder:text-sm",
-              className,
-            ].join(" ")}
-            {...rest}
+              id={id}
+              ref={ref}
+              required={required}
+              className={[
+                  "w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder:text-sm",
+                  className,
+              ].join(" ")}
+              {...rest}
           />
-        )}
       </div>
     );
   }

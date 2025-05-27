@@ -44,7 +44,7 @@ const Dashboard = () => {
   ];
 
   return (
-    <div className="p-6 bg-white ml-0 md:ml-64 max-h-screen ">
+    <div className="px-6 bg-white max-h-screen ">
       <SEO
         title="Admin dashboard"
         description="Admin dashboard"

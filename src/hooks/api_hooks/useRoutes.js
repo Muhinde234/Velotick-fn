@@ -22,7 +22,7 @@ export const useAddRoute = () => {
     const queryClient = useQueryClient();
 
     return useMutation({
-        mutationFn: addRoute,
+        mutationFn: (data) => addRoute(data),
         onSuccess: async () => {
             await queryClient.invalidateQueries({ queryKey: ['routes'] });
         },
