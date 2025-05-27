@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider, Navigate } from "react-router-dom";
+import {createBrowserRouter, Navigate, RouterProvider} from "react-router-dom";
 import "./index.css";
 import Guestlayout from "./layouts/Guestlayout";
 import NotFound from "./pages/NotFound";
@@ -10,140 +10,118 @@ import Bookings from "./pages/dashboard/booking";
 import Scheduledashboard from "./pages/dashboard/schedule";
 import Routes from "./pages/dashboard/routes";
 import Dashboard from "./pages/dashboard/dashboard";
-import ChangePassword from "./components/forms/changepassword";
-import { UserProvider } from "./context/userContext";
+import {UserProvider, useUser} from "./context/userContext";
 import Bus from "./pages/dashboard/bus";
 import Users from "./pages/dashboard/users";
-import Report from "./pages/dashboard/report";
 import About from "./pages/about";
 import Route from "./pages/route";
 import Terms from "./pages/terms";
 import Conditions from "./pages/conditions";
 import Unauthorized from "./pages/unauthorized";
-import { useUser } from "./context/userContext";
-
-// Protected Route Component
-const ProtectedRoute = ({ children, allowedRoles = [] }) => {
-  const { user, token, isLoading } = useUser(); 
-
- 
-  if (isLoading) {
-    return <div>Loading...</div>; // Or a spinner
-  }
 
 
-  if (!token) {
-    return <Navigate to="/login" replace />;
-  }
+const ProtectedRoute = ({children, allowedRoles = []}) => {
+    const {user, token, isLoading} = useUser();
 
 
-  if (allowedRoles.length > 0 && !allowedRoles.includes(user?.role)) {
-    return <Navigate to="/unauthorized" replace />;
-  }
-
-  return children;
-};
-
-const createDashboardRoutes = (role) => {
-  const baseRoutes = [
-    {
-      path: "booking",
-      element: <Bookings />,
-    },
-    {
-      path: "schedules",
-      element: <Scheduledashboard />,
-    },
-    {
-      path: "home",
-      element: <Dashboard />,
+    if (isLoading) {
+        return <div>Loading...</div>;
     }
-  ];
 
-  if (role === 'admin') {
-    return [
-      ...baseRoutes,
-      {
-        path: "routes",
-        element: <Routes />,
-      },
-      {
-        path: "buses",
-        element: <Bus />,
-      },
-      {
-        path: "users",
-        element: <Users />,
-      },
-      {
-        path: "report",
-        element: <Report />,
-      }
-    ];
-  }
 
-  if (role === 'manager') {
-    return [
-      ...baseRoutes,
-      {
-        path: "routes",
-        element: <Routes />,
-      },
-      {
-        path: "report",
-        element: <Report />,
-      }
-    ];
-  }
+    if (!token) {
+        return <Navigate to="/login" replace/>;
+    }
 
-  return baseRoutes;
+
+    if (allowedRoles.length > 0 && !user.roles.some(role => allowedRoles.includes(role))) {
+        return <Navigate to="/unauthorized" replace />;
+    }
+
+
+    return children;
 };
 
 // Main App Component
 function App() {
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <Guestlayout />,
-      errorElement: <NotFound />,
-      children: [
-        { path: "", element: <Home /> },
-        { path: "about", element: <About /> },
-        { path: "route", element: <Route /> },
-        { path: "terms", element: <Terms /> },
-     
-      ],
-    },
-       { path: "conditions", element: <Conditions /> },
-        { path: "unauthorized", element: <Unauthorized /> },
-        { path: "login", element: <LoginPage /> },
-        { path: "register", element: <RegisterPage /> },
-    {
-      path: "dashboard",
-      element: (
-        <ProtectedRoute>
-          <Dashboardlayout />
-        </ProtectedRoute>
-      ),
-      children: [
+    const router = createBrowserRouter([
         {
-          index: true,
-          element: (
-            <ProtectedRoute allowedRoles={['admin', 'manager', 'user']}>
-              <Dashboard />
-            </ProtectedRoute>
-          ),
-        },
-        ...createDashboardRoutes('admin'), 
-      ],
-    },
-  ]);
+            path: "/",
+            element: <Guestlayout/>,
+            errorElement: <NotFound/>,
+            children: [
+                {path: "", element: <Home/>},
+                {path: "about", element: <About/>},
+                {path: "route", element: <Route/>},
+                {path: "terms", element: <Terms/>},
 
-  return (
-    <UserProvider>
-      <RouterProvider router={router} />
-    </UserProvider>
-  );
+            ],
+        },
+        {path: "conditions", element: <Conditions/>},
+        {path: "unauthorized", element: <Unauthorized/>},
+        {path: "login", element: <LoginPage/>},
+        {path: "register", element: <RegisterPage/>},
+        {
+            path: "dashboard",
+            element: (
+                <ProtectedRoute allowedRoles={['admin', 'manager']}>
+                    <Dashboardlayout/>
+                </ProtectedRoute>
+            ),
+            children: [
+                {
+                    path: "",
+                    element: <Dashboard/>,
+                },
+                {
+                    path: "bookings",
+                    element: (
+                        <ProtectedRoute allowedRoles={['admin', 'manager']}>
+                            <Bookings/>
+                        </ProtectedRoute>
+                    ),
+                },
+                {
+                    path: "schedules",
+                    element: (
+                        <ProtectedRoute allowedRoles={['admin', 'manager']}>
+                            <Scheduledashboard/>
+                        </ProtectedRoute>
+                    ),
+                },
+                {
+                    path: "buses",
+                    element: (
+                        <ProtectedRoute allowedRoles={['admin', 'manager']}>
+                            <Bus/>
+                        </ProtectedRoute>
+                    ),
+                },
+                {
+                    path: "routes",
+                    element: (
+                        <ProtectedRoute allowedRoles={['admin', 'manager']}>
+                            <Routes/>
+                        </ProtectedRoute>
+                    ),
+                },
+                {
+                    path: "users",
+                    element: (
+                        <ProtectedRoute allowedRoles={['admin']}>
+                            <Users/>
+                        </ProtectedRoute>
+                    ),
+                },
+            ],
+        },
+    ]);
+
+    return (
+        <UserProvider>
+            <RouterProvider router={router}/>
+        </UserProvider>
+    );
 }
 
 export default App;
