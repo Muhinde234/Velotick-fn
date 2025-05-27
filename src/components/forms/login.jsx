@@ -24,25 +24,11 @@ const LoginPage = () => {
     mutate(data, {
       onSuccess: (response) => {
         const { user, token } = response;
-        login(user, token); // Call the login function from context
-        
-        // Redirect based on role
-        switch(user.roles[0]) {
-          case 'admin':
-            navigate("/dashboard/home");
-            break;
-          case 'manager':
-            navigate("/dashboard/schedules");
-            break;
-          case 'client':
-            navigate("/dashboard/booking");
-            break;
-          default:
-            navigate("/dashboard");
-        }
+        login(user, token);
+
+        navigate("/dashboard");
       },
       onError: (error) => {
-        // Handle API errors
         const errorMessage = error.response?.data?.message || "Login failed. Please try again.";
         setError("server", {
           type: "manual",
