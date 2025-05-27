@@ -1,8 +1,11 @@
 import SearchBar from "../ui/searchbar";
 import avatar from "../../assets/avatar.png";
 import { Bell } from "lucide-react";
+import {useUser} from "../../context/userContext.jsx";
 
 const Topsection = () => {
+  const {user} = useUser();
+
   return (
     <>
       <div className="flex flex-col md:flex-row items-center justify-between mb-6 gap-4">
@@ -26,7 +29,7 @@ const Topsection = () => {
               alt="User avatar"
             />
             <span className="text-sm font-medium text-gray-700 whitespace-nowrap">
-              Igirimpuhwe Dositha
+              {user.firstname + " "+user.lastname}
             </span>
           </div>
         </div>
