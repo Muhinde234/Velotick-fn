@@ -26,7 +26,10 @@ const LoginPage = () => {
         const { user, token } = response;
         login(user, token);
 
-        navigate("/dashboard");
+        if (user.roles.includes("user")) {
+          navigate("/");
+        }else
+          navigate("/dashboard");
       },
       onError: (error) => {
         const errorMessage = error.response?.data?.message || "Login failed. Please try again.";

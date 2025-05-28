@@ -1,10 +1,17 @@
 import {useMutation, useQuery, useQueryClient} from "@tanstack/react-query";
-import {createBus, deleteBus, getBus, getBuses, updateBus} from "../../api/buses/buses_api";
+import {createBus, deleteBus, getBus, getBuses, getBuseStats, updateBus} from "../../api/buses/buses_api";
 
 export const useBuses = () => {
     return useQuery({
         queryKey: ['buses'],
         queryFn: getBuses,
+    });
+}
+
+export const useBuseStats = () => {
+    return useQuery({
+        queryKey: ['stats'],
+        queryFn: getBuseStats,
     });
 }
 
@@ -15,6 +22,7 @@ export const useCreateBus = () => {
         mutationFn: (bus) => createBus(bus),
         onSuccess: async () => {
             await queryClient.invalidateQueries({queryKey: ['buses']});
+            await queryClient.invalidateQueries({queryKey: ['stats']});
         },
     });
 
@@ -35,6 +43,7 @@ export const useUpdateBus = () => {
         mutationFn: ({id, bus}) => updateBus(id, bus),
         onSuccess: async () => {
             await queryClient.invalidateQueries({queryKey: ['buses']});
+            await queryClient.invalidateQueries({queryKey: ['stats']});
         },
     });
 };
@@ -46,6 +55,7 @@ export const useDeleteBus = () => {
         mutationFn: deleteBus,
         onSuccess: async () => {
             await queryClient.invalidateQueries({queryKey: ['buses']});
+            await queryClient.invalidateQueries({queryKey: ['stats']});
         },
     });
 };

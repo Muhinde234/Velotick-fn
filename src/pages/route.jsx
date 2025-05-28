@@ -5,7 +5,6 @@ const Route = () => {
   return (
     <div className="mt-32">
       <SEO title="Routes" description="Routes" content="Routes" />
-      hano I will get the all routes
       <section>
         <RecentSchedules />
       </section>

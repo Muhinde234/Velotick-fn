@@ -18,6 +18,8 @@ import Route from "./pages/route";
 import Terms from "./pages/terms";
 import Conditions from "./pages/conditions";
 import Unauthorized from "./pages/unauthorized";
+import ScheduleDetails from "./pages/schedule_details.jsx";
+import MyTickets from "./pages/my_tickets.jsx";
 
 
 const ProtectedRoute = ({children, allowedRoles = []}) => {
@@ -35,14 +37,14 @@ const ProtectedRoute = ({children, allowedRoles = []}) => {
 
 
     if (allowedRoles.length > 0 && !user.roles.some(role => allowedRoles.includes(role))) {
-        return <Navigate to="/unauthorized" replace />;
+        return <Navigate to="/unauthorized" replace/>;
     }
 
 
     return children;
 };
 
-// Main App Component
+
 function App() {
     const router = createBrowserRouter([
         {
@@ -54,6 +56,11 @@ function App() {
                 {path: "about", element: <About/>},
                 {path: "route", element: <Route/>},
                 {path: "terms", element: <Terms/>},
+                {
+                    path: "schedule/:id",
+                    element: <ScheduleDetails />
+                },
+                {path: "my-tickets", element: <MyTickets />}
 
             ],
         },

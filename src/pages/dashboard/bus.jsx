@@ -4,7 +4,7 @@ import Button from "../../components/ui/button";
 import Topsection from "../../components/ui/topsection";
 import avatar from "../../assets/avatar.png";
 import SEO from "../../components/ui/seo";
-import {useBuses, useDeleteBus} from "../../hooks/api_hooks/useBuses.js";
+import {useBuses, useBuseStats, useDeleteBus} from "../../hooks/api_hooks/useBuses.js";
 import {useState} from "react";
 import Dialog from "../../components/ui/dialog.jsx";
 import BusForm from "../../components/forms/bus_form.jsx";
@@ -14,6 +14,7 @@ import DeleteDialog from "../../components/delete_dialog.jsx";
 const Bus = () => {
   const tableHeads = ["Bus number", "Status", "Route", "Driver", "Action"];
   const {data: buses, isLoading:isBusesLoading, isError: busesError} = useBuses();
+  const {data: stats, isLoading: isStatsLoading, error: statsError} = useBuseStats();
   const [dialogOpen, setDialogOpen] = useState(false);
   const [editData, setEditData] = useState(null);
   const [deleteId, setDeleteId] = useState(null);
@@ -45,34 +46,8 @@ const Bus = () => {
     })
   };
 
-  const stats = [
-    {
-      title: "Total Buses",
-      value: "150",
-      description: "Full fleet size for operations",
-      color: "indigo",
-    },
-    {
-      title: "Active Buses",
-      value: "65",
-      description: "Buses currently in service",
-      color: "green",
-    },
-    {
-      title: "In Maintenance",
-      value: "35",
-      description: "Buses in repair or check-up",
-      color: "orange",
-    },
-    {
-      title: "Available Buses",
-      value: "50",
-      description: "Ready for schedule assignment",
-      color: "blue",
-    },
-  ];
-
-
+  if (isStatsLoading) return <div className="p-6">Loading...</div>;
+  if (statsError) return <div className="p-6">Error: {statsError}</div>;
 
   return (
     <>
