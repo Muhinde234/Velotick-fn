@@ -11,6 +11,11 @@ export const getBuses = async () => {
   return response.data;
 };
 
+export const getBuseStats = async () => {
+  const response = await API.get("/buses/stats");
+  return response.data;
+};
+
 export const getBus = async (id) => {
   const response = await API.get(`/buses/${id}`);
   return response.data;
