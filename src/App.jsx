@@ -20,6 +20,7 @@ import Conditions from "./pages/conditions";
 import Unauthorized from "./pages/unauthorized";
 import ScheduleDetails from "./pages/schedule_details.jsx";
 import MyTickets from "./pages/my_tickets.jsx";
+import ErrorPage from "./pages/error_page.jsx";
 
 
 const ProtectedRoute = ({children, allowedRoles = []}) => {
@@ -70,6 +71,7 @@ function App() {
         {path: "register", element: <RegisterPage/>},
         {
             path: "dashboard",
+            errorElement: <ErrorPage />,
             element: (
                 <ProtectedRoute allowedRoles={['admin', 'manager']}>
                     <Dashboardlayout/>

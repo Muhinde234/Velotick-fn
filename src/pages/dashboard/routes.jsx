@@ -15,6 +15,7 @@ const Routes = () => {
     const [dialogOpen, setDialogOpen] = useState(false);
     const [editData, setEditData] = useState(null);
     const [deleteId, setDeleteId] = useState(null);
+
     const {data: routesData, isLoading: routesLoading, isError: routesError} = useGetRoutes();
     const routes = routesData?.data || [];
     const {mutate, isPending} = useDeleteRoute();
@@ -45,7 +46,7 @@ const Routes = () => {
         })
     };
 
-    if (routesLoading) return <div className="px-6">Loading...</div>;
+    if (routesLoading) return <Loader />;
     if (routesError) return <div className="px-6">Error: {routesError}</div>;
 
     return (

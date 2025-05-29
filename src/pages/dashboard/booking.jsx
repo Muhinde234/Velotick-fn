@@ -6,6 +6,7 @@ import SEO from "../../components/ui/seo";
 import avatar from "../../assets/avatar.png";
 import {useTickets} from "../../hooks/api_hooks/useTickets.js";
 import Dialog from "../../components/ui/dialog.jsx";
+import Loader from "../../components/ui/loader.jsx";
 
 export default function Bookings() {
   const tableHeads = ["Passenger", "Route", "Date", "Time", "Seat", "Actions"];
@@ -22,7 +23,7 @@ export default function Bookings() {
     setShowWarning(true);
   };
 
-  if (ticketsLoading) return <div className="px-6">Loading...</div>;
+  if (ticketsLoading) return <Loader />;
   if (ticketsError) return <div className="px-6">Error: {ticketsError}</div>;
 
   return (

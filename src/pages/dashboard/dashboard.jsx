@@ -54,7 +54,7 @@ const Dashboard = () => {
         <Topsection />
       </div>
 
-      <div className="flex gap-4  p-4 rounded-sm bg-gray-200 ">
+      <div className="flex gap-4  p-4 rounded-sm">
         <div className="w-[75%]">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
             {stats.map((stat, index) => (
@@ -77,11 +77,11 @@ const Dashboard = () => {
                   Today's Active Buses 120
                 </p>
               </div>
-              <select className="rounded-full  text-xl border px-4  py-1 text-sm">
-                <option>Active</option>
-              </select>
+              {/*<select className="rounded-full h-5 border px-4 py-2 text-sm">*/}
+              {/*  <option>Active</option>*/}
+              {/*</select>*/}
             </div>
-            <div className="flex  gap-10">
+            <div className="flex gap-5">
               <img
                 src={avatar}
                 alt="bus"
@@ -92,7 +92,7 @@ const Dashboard = () => {
                 <p className="text-sm text-gray-600">Driver</p>
               </div>
               <div className="flex flex-col">
-                <h1 className="text-xl">Seats</h1>
+                <h1 className="text-md">Seats</h1>
                 <p className="text-gray-600">Fully packed</p>
               </div>
             </div>

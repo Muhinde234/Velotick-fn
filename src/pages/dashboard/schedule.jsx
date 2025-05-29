@@ -11,6 +11,7 @@ import ScheduleForm from "../../components/forms/schedule_form.jsx";
 import toast from "react-hot-toast";
 import DeleteDialog from "../../components/delete_dialog.jsx";
 import BusSeats from "../../components/dashboard-feature/bus_seats.jsx";
+import Loader from "../../components/ui/loader.jsx";
 
 const Scheduledashboard = () => {
     const tableHeads = ["Bus Plate Number", "Route", "Departure Time", "Arrival Time", "Remaining Seats", "Actions"];
@@ -54,10 +55,7 @@ const Scheduledashboard = () => {
         })
     };
 
-
-    if (isLoading && isBusesLoading && isRoutesLoading) {
-        return <div className="px-6 min-h-screen">Loading...</div>;
-    }
+    if (isLoading || isBusesLoading || isRoutesLoading) return <Loader />;
 
     if (isError && isBusesError && isRoutesError) {
         return <div className="px-6 min-h-screen">Error: {error + busesError + routesError}</div>;
