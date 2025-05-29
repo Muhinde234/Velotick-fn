@@ -1,5 +1,6 @@
 import { Outlet } from "react-router-dom";
 import Sidebar from "../components/features/sidebar";
+import GlobalLoader from "../components/ui/global_loader.jsx";
 
 const Dashboardlayout = () => {
   return (

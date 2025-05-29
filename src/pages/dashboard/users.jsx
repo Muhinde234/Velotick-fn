@@ -14,15 +14,16 @@ import toast from "react-hot-toast";
 
 const Users = () => {
     const tableHeads = ["Full Names", "Email", "Nationality", "Roles", "Actions"];
-    const {data: usersData, isPending: usersPending, isError: usersHasError, error: usersError} = useUsers();
-    const users = usersData?.data;
-    const {data: roles, isPending: rolesPending, isError: rolesHasError, error: rolesError} = useRoles();
-    const {mutate, isPending} = useDeleteUser();
-    const {data: stats, isLoading:isStatsLoading, isError: isStatsError, error: statsError} = useRoleStats();
-
     const [dialogOpen, setDialogOpen] = useState(false);
     const [editData, setEditData] = useState(null);
     const [deleteId, setDeleteId] = useState(null);
+
+
+    const {data: usersData, isLoading: usersPending, isError: usersHasError, error: usersError} = useUsers();
+    const {data: roles, isLoading: rolesPending, isError: rolesHasError, error: rolesError} = useRoles();
+    const {data: stats, isLoading:isStatsLoading, isError: isStatsError, error: statsError} = useRoleStats();
+    const users = usersData?.data || [];
+    const {mutate, isPending} = useDeleteUser();
 
     const handleDialogClose = () => {
         setDialogOpen(false);
@@ -51,7 +52,6 @@ const Users = () => {
     }
 
 
-    if (usersPending || rolesPending || isStatsLoading) return <div className="p-6">Loading...</div>;
     if (usersHasError || rolesHasError || isStatsError) return <div className="p-6">Error: {usersError + rolesError + statsError}</div>;
 
     return (
